@@ -1,8 +1,7 @@
 <template>
-  <main class="container">
+  <main class="page-container">
     <header>
-      <h1>About what?</h1>
-      <h4>About this website.</h4>
+      <h1>About</h1>
       <img
         src="https://pbs.twimg.com/profile_images/1090208956440633345/Okg4uYbh_400x400.jpg"
         alt="Nuxt Logo"
@@ -27,7 +26,7 @@
 export default {
   head() {
     return {
-      title: 'A WebSite - About',
+      title: 'Plug-IT | About',
     }
   },
 }

@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main class="page-container">
     <header>
       <h1>This is a WebSite</h1>
       <h4>And it's made with Nuxt.</h4>

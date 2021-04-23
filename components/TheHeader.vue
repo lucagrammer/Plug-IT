@@ -1,8 +1,18 @@
+<!--
+  Component: TheHeader
+  Description: Header of the website with company logo and responsive navbar
+-->
+
 <template>
   <header class="header">
     <div class="header-content">
-      <div class="title"><h3>WebSite</h3></div>
-      <nav class="right">
+      <!-- Company Logo -->
+      <nuxt-link :to="'/'">
+        <img class="logo" src="~/static/logo.png" alt="Plug-IT" />
+      </nuxt-link>
+
+      <!-- Desktop Navbar -->
+      <nav class="desktop-nav">
         <div
           v-for="(item, itemIndex) of menuOptions"
           :key="'menu-item-' + itemIndex"
@@ -13,7 +23,39 @@
           </nuxt-link>
         </div>
       </nav>
+
+      <!-- Mobile Navbar Commands -->
+      <nav class="mobile-nav">
+        <span
+          v-if="!mobileMenuVisibility"
+          class="mdi mdi-menu"
+          @click="changeMobileMenuVisibility"
+        ></span>
+        <span
+          v-else
+          class="mdi mdi-close"
+          @click="changeMobileMenuVisibility"
+        ></span>
+      </nav>
     </div>
+
+    <!-- Mobile Navbar -->
+    <nav
+      v-if="mobileMenuVisibility"
+      class="mobile-nav dropdown-list"
+      @click="changeMobileMenuVisibility"
+    >
+      <div
+        v-for="(item, itemIndex) of menuOptions"
+        :key="'menu-item-' + itemIndex"
+        class="menu-item"
+      >
+        <nuxt-link :to="item.path">
+          {{ item.name }}
+          <span :class="item.icon"></span>
+        </nuxt-link>
+      </div>
+    </nav>
   </header>
 </template>
 
@@ -21,49 +63,124 @@
 export default {
   data() {
     return {
+      // Names and paths of the navbar elements
       menuOptions: [
         {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Blog',
-          path: '/blog',
-        },
-        {
           name: 'About',
+          icon: 'mdi mdi-book-open-page-variant',
           path: '/about',
         },
+        {
+          name: 'People',
+          icon: 'mdi mdi-account-group',
+          path: '/people',
+        },
+        {
+          name: 'Events',
+          icon: 'mdi mdi-calendar-month',
+          path: '/events',
+        },
+        {
+          name: 'Areas',
+          icon: 'mdi mdi-shape',
+          path: '/areas',
+        },
+        {
+          name: 'Our Services',
+          icon: 'mdi mdi-view-grid',
+          path: '/services',
+        },
+        {
+          name: 'Contacts',
+          icon: 'mdi mdi-email',
+          path: '/contacts',
+        },
       ],
+      // Mobile navbar menu expansion status
+      mobileMenuVisibility: false,
     }
+  },
+  methods: {
+    // Reduce/expand the dropdown menu of the mobile navbar
+    changeMobileMenuVisibility() {
+      this.mobileMenuVisibility = !this.mobileMenuVisibility
+    },
   },
 }
 </script>
 
-<style>
+<style scoped>
 .header {
+  position: fixed;
+  width: 100vw;
+  background: rgba(229, 229, 229, 0.9);
   height: 70px;
-  background: black;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
+  top: 0;
 }
+.header * {
+  color: black;
+}
+
 .header-content {
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
+  height: inherit;
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+.header-content .mdi {
+  font-size: 36px;
+}
+.header-content .menu-item {
+  margin-left: 1.5vw;
+}
+
+nav {
   align-items: center;
-}
-.right {
+  height: inherit;
+  float: right;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: auto;
-  max-width: 50%;
+  font-size: 20px;
 }
-.title {
-  font-size: 1.3rem;
-  margin-bottom: 5px;
+
+.dropdown-list {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(238, 238, 238, 0.9);
+  font-size: 28px;
+}
+.dropdown-list .mdi {
+  vertical-align: bottom;
+  margin-left: 5px;
+}
+.dropdown-list .menu-item {
+  text-align: right;
+  margin-right: 8vw;
+  margin-top: 10px;
+}
+
+.nuxt-link-active {
+  font-weight: 800;
+}
+.menu-item :hover {
+  color: #47494e;
+}
+
+img.logo {
+  max-height: 45px;
+  width: auto;
+  float: left;
+  margin-top: 12.5px;
+  margin-bottom: 12.5px;
+}
+
+@media screen and (max-width: 825px) /* on screen size <= */ {
+  .desktop-nav {
+    display: none;
+  }
+}
+@media screen and (min-width: 826px) /* on screen size > */ {
+  .mobile-nav {
+    display: none;
+  }
 }
 </style>
