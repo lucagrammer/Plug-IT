@@ -2,8 +2,9 @@ export default {
   ssr: true,
   target: 'server',
   env: {
-    BASE_URL: 'https://test-polimi.herokuapp.com', // Production URL
-    // BASE_URL: '', // Development URL
+    // BASE_URL: 'https://test-polimi.herokuapp.com', // Production URL
+    BASE_URL: '', // Development URL
+    GOOGLE_MAPS_API_KEY: 'AIzaSyCWL7MydXuhufeaRI9RAVEUAKiTH8lu6TA', // Google Maps Secret Key
   },
   serverMiddleware: [
     {
@@ -30,10 +31,11 @@ export default {
 
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', href: '/icon.png' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       {
         href:
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap',
+          'https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap',
         rel: 'stylesheet',
       },
       {

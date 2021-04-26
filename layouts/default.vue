@@ -27,34 +27,29 @@ html {
   margin-top: 70px;
 }
 .page-container {
-  padding: 10px;
+  min-height: 90vh;
+}
+.section-container {
+  display: flow-root;
   margin-left: 8vw;
   margin-right: 8vw;
 }
-
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-
 a {
   text-decoration: none;
+  color: black;
+}
+.disabled-link {
+  cursor: initial;
+}
+hr {
+  border: none;
+  border-top: #212121 solid 2px;
+  width: 100%;
+}
+p {
+  text-align: justify;
+}
+figure img {
+  border-radius: 20px;
 }
 </style>
