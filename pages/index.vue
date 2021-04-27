@@ -50,6 +50,9 @@
         </p>
       </paragraph>
     </section>
+    <section>
+      <contact-form pageName="pippo" />
+    </section>
   </main>
 </template>
 
@@ -57,11 +60,13 @@
 import BaseButton from '~/components/BaseButton.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
+import ContactForm from '~/components/ContactForm.vue'
 export default {
   components: {
     BaseButton,
     Paragraph,
     Grid,
+    ContactForm,
   },
   data() {
     return {
