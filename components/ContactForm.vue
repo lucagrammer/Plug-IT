@@ -65,11 +65,22 @@
         </td>
       </tr>
     </table>
+    <input type="checkbox" name="privacy" id="privacy" /><label for="privacy"
+      >I agree with the privacy policy</label
+    >
+    <br />
+    <input type="checkbox" name="commercial" id="commercial" /><label
+      for="commercial"
+      >I'd like to subscribe to the newsletter</label
+    >
+    <div><base-button label="Send" icon="mdi mdi-send" /></div>
   </form>
 </template>
 
 <script>
+import BaseButton from './BaseButton.vue'
 export default {
+  components: { BaseButton },
   props: {
     pageName: { type: String, default: () => '' },
   },
