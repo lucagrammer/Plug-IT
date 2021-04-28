@@ -46,9 +46,6 @@ hr {
   border-top: #212121 solid 2px;
   width: 100%;
 }
-p {
-  text-align: justify;
-}
 figure img {
   border-radius: 20px;
 }

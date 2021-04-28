@@ -7,8 +7,8 @@
   <header class="header">
     <div class="header-content">
       <!-- Company Logo -->
-      <nuxt-link :to="'/'">
-        <img class="logo" src="~/static/logo.png" alt="Plug-IT" />
+      <nuxt-link to="/" class="logo">
+        <img src="~/static/logo.png" alt="Plug-IT" />
       </nuxt-link>
 
       <!-- Desktop Navbar -->
@@ -96,7 +96,8 @@ export default {
           path: '/contacts',
         },
       ],
-      // Mobile navbar menu expansion status
+
+      // Expansion status of the mobile navbar menu
       mobileMenuVisibility: false,
     }
   },
@@ -166,12 +167,15 @@ nav {
   color: #47494e;
 }
 
-img.logo {
+img {
   max-height: 45px;
   width: auto;
   float: left;
   margin-top: 12.5px;
   margin-bottom: 12.5px;
+}
+.logo {
+  display: block;
 }
 
 @media screen and (max-width: 825px) /* on screen size <= */ {

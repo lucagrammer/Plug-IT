@@ -7,9 +7,7 @@
   <footer class="footer">
     <div class="footer-content">
       <!-- Company Icon -->
-      <nuxt-link :to="'/'">
-        <img class="logo" src="~/static/icon.png" alt="Plug-IT" />
-      </nuxt-link>
+      <img class="logo" src="~/static/icon.png" alt="Logo of Plug-IT" />
       <div class="footer-label">&copy; 2021 Plug-IT</div>
 
       <!-- Social list -->
@@ -20,7 +18,12 @@
           :key="'icon-item-' + itemIndex"
           class="icon-item"
         >
-          <a :href="item.link" target="_blank" :alt="item.name">
+          <a
+            :href="item.link"
+            target="_blank"
+            rel="noopener"
+            :aria-label="item.name"
+          >
             <span :class="item.icon"></span>
           </a>
         </div>

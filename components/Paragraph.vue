@@ -5,12 +5,12 @@
   └── default slot: paragraph's text
   Props:
   ├── image: image for the paragraphs (optional)
-  ├── image-cap: alt attribute of the image for SEO purposes (optional)
+  ├── image-cap: alt attribute of the image (optional)
   └── postion: position of the paragraph's text. Either 'right' or 'left'. Right by default (optional)
 -->
 
 <template>
-  <section class="paragraph">
+  <section :class="'paragraph-container ' + mobileContainerClass">
     <!-- Left image of the paragraph   -->
     <div v-if="leftImageVisibility" class="paragraph-image">
       <figure class="wrapper">
@@ -19,8 +19,8 @@
     </div>
 
     <!-- Text of the paragraph -->
-    <div :class="paragraphClass">
-      <div :class="'wrapper ' + paragraphTypeClass">
+    <div :class="paragraphTextClass">
+      <div :class="'wrapper ' + textWrapperClass">
         <slot> </slot>
       </div>
     </div>
@@ -40,32 +40,52 @@ export default {
     // image: image for the paragraphs (optional)
     image: { type: String, default: () => '' },
 
-    // image-cap: alt attribute of the image for SEO purposes (optional)
-    imageCap: { type: String, default: () => 'ICT image' },
+    // image-cap: alt attribute of the image (optional)
+    imageCap: { type: String, default: () => '' },
 
     // postion: position of the paragraph's text. Either 'right' or 'left'. Right by default (optional)
-    position: { type: String, default: () => 'right' },
+    position: {
+      type: String,
+      default: () => 'right',
+      validator: (value) => ['right', 'left'].includes(value.toLowerCase()),
+    },
   },
   data() {
     return {
       // Visibility flag of the left image
-      leftImageVisibility: this.image !== '' && this.position === 'right',
+      leftImageVisibility: this.hasImage() && this.isRightPositioned(),
 
       // Visibility flag of the right image
-      rightImageVisibility: this.image !== '' && this.position === 'left',
+      rightImageVisibility: this.hasImage() && !this.isRightPositioned(),
 
-      // Class for the paragraph's text
-      paragraphClass:
-        this.image !== '' ? 'paragraph-text' : 'paragraph-text-only',
+      // Class of the main container of the paragraph to show the image always before the text in mobile version.
+      mobileContainerClass: this.isRightPositioned()
+        ? ''
+        : 'image-before-paragraph',
 
-      // Class for the wrapper of the paragraph's text
-      paragraphTypeClass:
-        this.image === ''
-          ? ''
-          : this.position === 'right'
-          ? ' right-paragraph'
-          : ' left-paragraph',
+      // Class for the paragraph's text to manage its size according to its type
+      paragraphTextClass: this.hasImage()
+        ? 'paragraph-text'
+        : 'paragraph-text-only',
+
+      // Class for the wrapper of the paragraph's text to define left/right margin
+      textWrapperClass: !this.hasImage()
+        ? ''
+        : this.isRightPositioned()
+        ? ' right-paragraph'
+        : ' left-paragraph',
     }
+  },
+  methods: {
+    // Return true iff the paragraph's text is right positioned
+    isRightPositioned() {
+      return this.position === 'right'
+    },
+
+    // Return true iff the paragraph is not a text-only one
+    hasImage() {
+      return this.image !== ''
+    },
   },
 }
 </script>
@@ -75,7 +95,7 @@ export default {
   display: inline-block;
   margin: auto;
 }
-.paragraph {
+.paragraph-container {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   width: 100%;
@@ -131,12 +151,13 @@ img {
   .right-paragraph {
     padding-left: 0px;
   }
-  .paragraph-image {
-    float: right;
-  }
   .left-paragraph :first-child,
   .right-paragraph :first-child {
     margin-top: revert;
+  }
+  .image-before-paragraph {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   Component: Grid
   Description: A grid of cards
   Props:
-  ├── featured-element: featured card component props
+  ├── featured-element: featured card component props (optional)
   └── elements: array of card component props
 -->
 
@@ -16,9 +16,9 @@
           :heading="featuredElement.heading"
           :destination-link="featuredElement.destinationLink"
           :subheading="featuredElement.subheading"
-          :subheading-icon="featuredElement.subheadingIcon"
           :subheading-link="featuredElement.subheadingLink"
           :label="featuredElement.label"
+          :label-icon="featuredElement.labelIcon"
           :summary="featuredElement.summary"
         />
       </div>
@@ -40,9 +40,9 @@
           :heading="element.heading"
           :destination-link="element.destinationLink"
           :subheading="element.subheading"
-          :subheading-icon="element.subheadingIcon"
           :subheading-link="element.subheadingLink"
           :label="element.label"
+          :label-icon="element.labelIcon"
           :summary="element.summary"
         />
       </div>
@@ -55,11 +55,11 @@ import Card from './Card.vue'
 export default {
   components: { Card },
   props: {
-    // featured-element: featured card component props
+    // featured-element: featured card component props (optional)
     featuredElement: { type: Object, default: () => null },
 
     // elements: array of card component props
-    elements: { type: Array, default: () => [] },
+    elements: { type: Array, default: () => [], required: true },
   },
 }
 </script>

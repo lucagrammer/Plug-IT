@@ -18,7 +18,7 @@
 export default {
   props: {
     // label: the button label
-    label: { type: String, default: () => '' },
+    label: { type: String, default: () => '', required: true },
 
     // icon: the icon to be shown (optional)
     icon: { type: String, default: () => '' },
