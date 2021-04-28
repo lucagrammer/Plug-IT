@@ -9,29 +9,47 @@ async function init() {
   // Call the init function that returns the Database
   const db = await initializeDatabase()
   // Let's extract all the objects we need to perform queries inside the endpoints
-  const { Article, Comment } = db._tables
-  // API to get all the articles
-  app.get('/articles', async (req, res) => {
-    const articles = await Article.findAll()
-    return res.json(articles)
+  const { Events, People, Services } = db._tables
+  // API to get all the events
+  app.get('/events', async (req, res) => {
+    const events = await Events.findAll()
+    return res.json(events)
   })
-  // API to get an article by ID.
-  // This one will return also the comments
-  app.get('/article/:id', async (req, res) => {
+  // API to get a event by ID.
+  app.get('/events/:id', async (req, res) => {
     const { id } = req.params
-    const article = await Article.findOne({
+    const event = await Events.findOne({
       where: { id },
-      include: { model: Comment }, // -> this is the way we "include" also comments inside Articles
     })
-    return res.json(article)
+    return res.json(event)
   })
-  // This one is just an example
-  app.get('/ad', (req, res) => {
-    return res.json({
-      url:
-        'https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/google-display-ads-example-2-final.png?oV7qevVB2XtFyF_O64TG6L27AFM3M2oL&itok=TBfuuTM_',
+  // API to get all the people
+  app.get('/people', async (req, res) => {
+    const people = await People.findAll()
+    return res.json(people)
+  })
+  // API to get a person by ID.
+  app.get('/people/:id', async (req, res) => {
+    const { id } = req.params
+    const person = await People.findOne({
+      where: { id },
     })
+    return res.json(person)
   })
+  // API to get all the services
+  app.get('/services', async (req, res) => {
+    const services = await Services.findAll()
+    return res.json(services)
+  })
+  // API to get a service by ID.
+  app.get('/services/:id', async (req, res) => {
+    const { id } = req.params
+    const service = await Services.findOne({
+      where: { id },
+    })
+    return res.json(service)
+  })
+  
 }
 
 init()
