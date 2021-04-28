@@ -2,14 +2,13 @@
   Component: Card
   Description: A card with an image and a structured description
   Props:
-  ├── image: card image path (headign prop is used as alt attribute)
-  ├── icon: the icon to be shown (optional)
+  ├── image: card image path
   ├── heading: main heading of the card
-  ├── destination-link: destination link of the heading and image (optional)
+  ├── destination-link: destination link of the heading and image
   ├── subheading: subheading of the card
-  ├── subheading-icon: icon to be shown before the subheading (optional)
   ├── subheading-link: link of the subheading (optional)
   ├── label: additional label of the card (optional)
+  ├── label-icon: icon to be shown before the label (optional)
   └── summary: short paragraph to be shown inside the card (optional)
 -->
 
@@ -17,13 +16,8 @@
   <div class="card">
     <!-- Right card image -->
     <div class="card-image">
-      <figure class="wrapper">
-        <nuxt-link
-          :class="destinationLink !== '' ? '' : 'disabled-link'"
-          :to="destinationLink"
-        >
-          <img :src="image" :alt="heading" />
-        </nuxt-link>
+      <figure class="wrapper" @click="navigateTo(destinationLink)">
+        <img :src="image" :alt="heading" />
       </figure>
     </div>
 
@@ -31,10 +25,7 @@
     <div class="card-description">
       <!-- Heading -->
       <h3>
-        <nuxt-link
-          :class="destinationLink !== '' ? '' : 'disabled-link'"
-          :to="destinationLink"
-        >
+        <nuxt-link :to="destinationLink">
           {{ heading }}
         </nuxt-link>
       </h3>
@@ -45,43 +36,44 @@
           :class="subheadingLink !== '' ? '' : 'disabled-link'"
           :to="subheadingLink"
         >
-          <span :class="subheadingIcon"></span>
           {{ subheading }}
         </nuxt-link>
       </h4>
 
       <!-- Label -->
-      <h4>{{ label }}</h4>
+      <h4 v-if="label != ''"><span :class="labelIcon"></span> {{ label }}</h4>
 
       <!-- Summary -->
-      <p>{{ summary }}</p>
+      <p v-if="summary != ''">{{ summary }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import RoutingMixins from '~/mixins/Routing.js'
 export default {
+  mixins: [RoutingMixins],
   props: {
-    // image: card image path (headign prop is used as alt attribute)
-    image: { type: String, default: () => '' },
+    // image: card image path
+    image: { type: String, default: () => '', required: true },
 
     // heading: main heading of the card
-    heading: { type: String, default: () => '' },
+    heading: { type: String, default: () => '', required: true },
 
-    // destination-link: destination link of the heading and image (optional)
-    destinationLink: { type: String, default: () => '' },
+    // destination-link: destination link of the heading and image
+    destinationLink: { type: String, default: () => '', required: true },
 
     // subheading: subheading of the card
-    subheading: { type: String, default: () => '' },
-
-    // subheading-icon: icon to be shown before the subheading (optional)
-    subheadingIcon: { type: String, default: () => '' },
+    subheading: { type: String, default: () => '', required: true },
 
     // subheading-link: link of the subheading (optional)
     subheadingLink: { type: String, default: () => '' },
 
     // label: additional label of the card (optional)
     label: { type: String, default: () => '' },
+
+    // label-icon: icon to be shown before the label (optional)
+    labelIcon: { type: String, default: () => '' },
 
     // summary: short paragraph to be shown inside the card (optional)
     summary: { type: String, default: () => '' },

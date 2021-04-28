@@ -1,75 +1,73 @@
 <!--
-  Component: Paragraph
-  Description: A general purpose paragraph with an (optional) image
-  Named slots: 
-  └── default slot: paragraph's text
+  Component: Contact Form
+  Description: A contact form to contact the company
   Props:
-  ├── image: image for the paragraphs (optional)
-  ├── image-cap: alt attribute of the image for SEO purposes (optional)
-  └── postion: position of the paragraph's text. Either 'right' or 'left'. Right by default (optional)
+  └── page-name: the page from which the form has been sent
 -->
 
 <template>
   <form action="/messagesubmit" method="post">
-    <input type="hidden" id="pageName" name="pageName" :value="pageName" />
+    <input id="pageName" type="hidden" name="pageName" :value="pageName" />
     <table>
-      <tr>
-        <td><label for="name">Name:</label></td>
-        <td>
-          <input
-            type="text"
-            name="name"
-            placeholder="Insert name"
-            id="name"
-            required
-          />
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Insert name"
+              required
+            />
+          </td>
+        </tr>
 
-      <tr>
-        <td><label for="surname">Surname:</label></td>
-        <td>
-          <input
-            type="text"
-            name="surname"
-            placeholder="Insert surname"
-            id="surname"
-            required
-          />
-        </td>
-      </tr>
+        <tr>
+          <td><label for="surname">Surname:</label></td>
+          <td>
+            <input
+              id="surname"
+              type="text"
+              name="surname"
+              placeholder="Insert surname"
+              required
+            />
+          </td>
+        </tr>
 
-      <tr>
-        <td><label for="mail">E-Mail:</label></td>
-        <td>
-          <input
-            type="mail"
-            name="mail"
-            placeholder="Insert your e-mail address"
-            id="mail"
-            required
-          />
-        </td>
-      </tr>
+        <tr>
+          <td><label for="mail">E-Mail:</label></td>
+          <td>
+            <input
+              id="mail"
+              type="mail"
+              name="mail"
+              placeholder="Insert your e-mail address"
+              required
+            />
+          </td>
+        </tr>
 
-      <tr>
-        <td><label for="message">Message:</label></td>
-        <td>
-          <textarea
-            id="message"
-            required
-            name="message"
-            maxlength="1000"
-            placeholder="Write here your message"
-          ></textarea>
-        </td>
-      </tr>
+        <tr>
+          <td><label for="message">Message:</label></td>
+          <td>
+            <textarea
+              id="message"
+              required
+              name="message"
+              maxlength="1000"
+              placeholder="Write here your message"
+            ></textarea>
+          </td>
+        </tr>
+      </tbody>
     </table>
-    <input type="checkbox" name="privacy" id="privacy" /><label for="privacy"
+    <input id="privacy" type="checkbox" name="privacy" /><label for="privacy"
       >I agree with the privacy policy</label
     >
     <br />
-    <input type="checkbox" name="commercial" id="commercial" /><label
+    <input id="commercial" type="checkbox" name="commercial" /><label
       for="commercial"
       >I'd like to subscribe to the newsletter</label
     >
@@ -82,7 +80,7 @@ import BaseButton from './BaseButton.vue'
 export default {
   components: { BaseButton },
   props: {
-    pageName: { type: String, default: () => '' },
+    pageName: { type: String, default: () => '', required: true },
   },
 }
 </script>
