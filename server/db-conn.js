@@ -16,8 +16,8 @@ const db = new Sequelize(
  * Function to define the structure of the database
  */
 function defineDatabaseStructure() {
-  const People = db.define(
-    'people',
+  const Person = db.define(
+    'person',
     {
       name: DataTypes.STRING,
       surname: DataTypes.STRING,
@@ -107,37 +107,37 @@ function defineDatabaseStructure() {
     }
   )
 
-  // Creating the N -> N association between Event and People
-  Event.belongsToMany(People, { through: 'eventHost' })
-  People.belongsToMany(Event, { through: 'eventHost' })
+  // Creating the N -> N association between Event and Person
+  Event.belongsToMany(Person, { through: 'eventHost' })
+  Person.belongsToMany(Event, { through: 'eventHost' })
 
-  // Creating the N -> N association between Area and People
-  Area.belongsToMany(People, { through: 'employee' })
-  People.belongsToMany(Area, { through: 'employee' })
+  // Creating the N -> N association between Area and Person
+  Area.belongsToMany(Person, { through: 'employee' })
+  Person.belongsToMany(Area, { through: 'employee' })
 
-  // Creating the N -> N association between Service and People
-  Service.belongsToMany(People, { through: 'assistance' })
-  People.belongsToMany(Service, { through: 'assistance' })
+  // Creating the N -> N association between Service and Person
+  Service.belongsToMany(Person, { through: 'assistance' })
+  Person.belongsToMany(Service, { through: 'assistance' })
 
   // Creating the 1 -> N association between Event and Area
   Area.hasMany(Event)
   Event.belongsTo(Area)
 
-  // Creating the 1 -> N association between People and Service
-  People.hasMany(Service, { foreignKey: 'project_manager' })
-  Service.belongsTo(People)
+  // Creating the 1 -> N association between Person and Service
+  Person.hasMany(Service, { foreignKey: 'project_manager' })
+  Service.belongsTo(Person)
 
   // Creating the 1 -> N association between Service and Area
   Area.hasMany(Service)
   Service.belongsTo(Area)
 
-  // Creating the 1 -> 1 association between People and Area
-  People.hasMany(Area, { foreignKey: 'responsible' })
-  Area.belongsTo(People)
+  // Creating the 1 -> 1 association between Person and Area
+  Person.hasMany(Area, { foreignKey: 'responsible' })
+  Area.belongsTo(Person)
 
   db._tables = {
     Event,
-    People,
+    Person,
     Area,
     Service,
     Message,
@@ -151,7 +151,7 @@ async function initializeDatabase() {
   // Call the function for the database structure definition
   defineDatabaseStructure()
   // Synchronize Sequelize with the actual database
-  await db.sync({ force: true })
+  await db.sync({ force: false })
 
   return db
 }

@@ -18,14 +18,14 @@
     </section>
     <hr />
     <section class="section-container">
-      <grid :elements="testElements" />
+      <grid :elements="people" />
     </section>
     <hr />
   </main>
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
 
@@ -36,25 +36,37 @@ export default {
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/people`)
-    const people = data
+    const res = data
+    const people = []
+    console.log(res)
+    for (const person in res) {
+      console.log(person.name)
+      people.push({
+        heading: person.name + ' ' + person.surname,
+        image: person.image,
+        destinationLink: '/people/' + person.id,
+        subheading: person.position,
+      })
+    }
+    console.log(people)
     return {
       people,
     }
   },
   data() {
     return {
-      adUrl: '',
+      // adUrl: '',
       testCap: 'This is an image',
       testImage: '/security.png',
     }
   },
+  /*
   mounted() {
     setTimeout(async () => {
       const { data } = await axios.get('/api/ad')
       this.adUrl = data.url
     }, 1000)
-  },
-  methods: {
+  }, */ methods: {
     goToService(path) {
       this.$router.push({ path })
     },
