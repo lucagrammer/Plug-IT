@@ -82,6 +82,7 @@ export default {
 </script>
 
 <style scoped>
+/* Card wrapper and container */
 .wrapper {
   display: inline-block;
   margin: auto;
@@ -92,21 +93,23 @@ export default {
   justify-content: space-evenly;
 }
 
+/* Sizing for the textual description of the card */
 .card-description {
   width: 60%;
   padding-left: 2em;
   padding-right: 1em;
 }
 
+/* Sizing for the image of the card */
 .card-image {
   max-width: 40%;
 }
 
+/* Adjusted apperance of the basic elements */
 img {
   height: 100px;
   width: 100px;
 }
-
 h3 {
   margin-top: 0px;
   margin-bottom: 4px;

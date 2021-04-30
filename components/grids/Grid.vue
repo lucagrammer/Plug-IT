@@ -65,12 +65,15 @@ export default {
 </script>
 
 <style scoped>
+/* Grid spacing */
 .grid {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   width: 100%;
   display: flow-root;
 }
+
+/* Full width elements for desktop devices */
 .grid-element,
 .row {
   position: relative;
@@ -80,6 +83,7 @@ export default {
   display: inline-block;
 }
 
+/* Two elements per row for mobile devices */
 @media (min-width: 720px) {
   .grid-element {
     float: left;

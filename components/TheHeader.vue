@@ -111,6 +111,7 @@ export default {
 </script>
 
 <style scoped>
+/* Positioning and colors of the whole component */
 .header {
   position: fixed;
   width: 100vw;
@@ -119,10 +120,13 @@ export default {
   top: 0;
   z-index: 999;
 }
+
+/* Foreground components black */
 .header * {
   color: black;
 }
 
+/* Main header containers */
 .header-content {
   height: inherit;
   margin-left: 8vw;
@@ -134,6 +138,9 @@ export default {
 .header-content .menu-item {
   margin-left: 1.5vw;
 }
+.menu-item :hover {
+  color: #47494e;
+}
 
 nav {
   align-items: center;
@@ -143,6 +150,7 @@ nav {
   font-size: 20px;
 }
 
+/* Appearance of the mobile navbar elements */
 .dropdown-list {
   display: block;
   width: 100vw;
@@ -160,13 +168,12 @@ nav {
   margin-top: 10px;
 }
 
+/* Appearance of the landmark to current page */
 .nuxt-link-active {
   font-weight: 800;
 }
-.menu-item :hover {
-  color: #47494e;
-}
 
+/* Logo layout */
 img {
   max-height: 45px;
   width: auto;
@@ -178,12 +185,14 @@ img {
   display: block;
 }
 
-@media screen and (max-width: 825px) /* on screen size <= */ {
+/* Mobile navbar if viewport <=825 px */
+@media screen and (max-width: 825px) {
   .desktop-nav {
     display: none;
   }
 }
-@media screen and (min-width: 826px) /* on screen size > */ {
+/* Desktop navbar if viewport >=826 px */
+@media screen and (min-width: 826px) {
   .mobile-nav {
     display: none;
   }

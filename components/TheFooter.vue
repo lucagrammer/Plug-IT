@@ -60,23 +60,26 @@ export default {
 </script>
 
 <style scoped>
+/* Positioning and colors of the whole component */
 .footer {
   width: 100vw;
   background: rgba(229, 229, 229, 0.9);
   height: 65px;
   bottom: 0;
 }
+
+/* Foreground components black */
 .footer * {
   color: black;
 }
 
+/* Main footer containers */
 .footer-content {
   margin-left: 8vw;
   width: 84vw;
   height: inherit;
   margin-right: 8vw;
 }
-
 .footer-label,
 .icon-list {
   display: inline-flex;
@@ -91,6 +94,7 @@ export default {
   float: right;
 }
 
+/* Colored social icons on mouse hover */
 .mdi-twitter:hover {
   color: #00d9ff;
 }
@@ -101,6 +105,7 @@ export default {
   color: #137ffa;
 }
 
+/* Footer logo layout */
 img.logo {
   max-height: 50px;
   width: auto;

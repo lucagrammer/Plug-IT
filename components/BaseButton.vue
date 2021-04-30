@@ -3,12 +3,13 @@
   Description: A general purpose button with an optional icon
   Props:
   ├── label: the button label
+  ├── type: the type of the button. Button by default. 
   ├── icon: the icon to be shown (optional)
   └── hover-flag: substitute the icon with the outline version on mouse hover. True by default.
 -->
 
 <template>
-  <button type="button" @mouseenter="outlineIcon()" @mouseleave="solidIcon()">
+  <button :type="type" @mouseenter="outlineIcon()" @mouseleave="solidIcon()">
     <span v-if="icon" :class="iconClass"></span>
     {{ label }}
   </button>
@@ -19,6 +20,9 @@ export default {
   props: {
     // label: the button label
     label: { type: String, default: () => '', required: true },
+
+    // type: the type of the button. Button by default.
+    type: { type: String, default: () => 'button' },
 
     // icon: the icon to be shown (optional)
     icon: { type: String, default: () => '' },
@@ -47,6 +51,7 @@ export default {
 </script>
 
 <style scoped>
+/* Appearance of the button */
 button {
   background-color: #212121;
   color: white;

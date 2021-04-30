@@ -91,10 +91,13 @@ export default {
 </script>
 
 <style scoped>
+/*  Wrapper to center the content */
 .wrapper {
   display: inline-block;
   margin: auto;
 }
+
+/* Containers components */
 .paragraph-container {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
@@ -108,27 +111,31 @@ export default {
   width: 100%;
 }
 
+/* Additional spacing between text and the paragraph image  */
 .left-paragraph {
   padding-right: 2em;
 }
 .right-paragraph {
   padding-left: 2em;
 }
+
+/* Prevent huge margin top space, as the whole component is already spaced apart */
 .left-paragraph :first-child,
 .right-paragraph :first-child {
   margin-top: 0px;
 }
 
+/* Image layout */
 .paragraph-image * {
   display: block;
 }
-
 img {
   width: auto;
   max-width: 100%;
   margin: auto;
 }
 
+/* Grid management for mobile devices */
 @media (min-width: 720px) {
   .paragraph-image,
   .paragraph-text {
@@ -141,6 +148,7 @@ img {
     width: 40%;
   }
 }
+/* Grid management for desktop devices */
 @media (max-width: 719px) {
   img {
     max-height: 70vh;
@@ -151,10 +159,14 @@ img {
   .right-paragraph {
     padding-left: 0px;
   }
+
+  /* Revert the margin for the first element */
   .left-paragraph :first-child,
   .right-paragraph :first-child {
     margin-top: revert;
   }
+
+  /* Show images always before the text */
   .image-before-paragraph {
     display: flex;
     flex-direction: column-reverse;
