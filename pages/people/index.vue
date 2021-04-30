@@ -1,18 +1,21 @@
 <template>
   <main class="page-container">
     <section class="section-container">
-      <h1>People</h1>
-    </section>
-    <section class="section-container">
-      <paragraph :image="testImage" :image-cap="testCap" position="left">
+      <breadcrumb current-page="People" />
+      <paragraph
+        image="people.jpeg"
+        image-cap="Image of a plug-it team at work around a desk"
+        position="left"
+      >
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum'.
+          <i>Plug-IT</i> is made up of talented individuals who share a
+          <strong>passion</strong>
+          for achieving the best in everything they do. Our team puts
+          <strong>our clients first</strong>, with a relentless focus on
+          championing bold ideas that help them achieve the extraordinary.
+          <br />
+          In every office, on every team, you’ll find passionate, collaborative
+          people who care for you and your success.
         </p>
       </paragraph>
     </section>
@@ -48,24 +51,6 @@ export default {
     return {
       people,
     }
-  },
-  data() {
-    return {
-      // adUrl: '',
-      testCap: 'This is an image',
-      testImage: '/security.png',
-    }
-  },
-  /*
-  mounted() {
-    setTimeout(async () => {
-      const { data } = await axios.get('/api/ad')
-      this.adUrl = data.url
-    }, 1000)
-  }, */ methods: {
-    goToService(path) {
-      this.$router.push({ path })
-    },
   },
 }
 </script>
