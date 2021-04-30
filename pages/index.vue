@@ -54,8 +54,11 @@
         </p>
       </paragraph>
     </section>
-    <section>
-      <contact-form page-name="pippo" />
+    <section class="section-container">
+      <contact-form
+        heading="If you are interested in this event, please contact us"
+        page-name="pippo"
+      />
     </section>
   </main>
 </template>
