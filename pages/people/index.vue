@@ -36,19 +36,15 @@ export default {
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/people`)
-    const res = data
     const people = []
-    console.log(res)
-    for (const person in res) {
-      console.log(person.name)
+    data.forEach(function (person) {
       people.push({
         heading: person.name + ' ' + person.surname,
         image: person.image,
         destinationLink: '/people/' + person.id,
         subheading: person.position,
       })
-    }
-    console.log(people)
+    })
     return {
       people,
     }

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import Grid from '~/components/grids/Grid.vue'
 export default {
   components: {
@@ -20,21 +20,25 @@ export default {
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/services`)
-    const services = data
+    const services = []
+    data.forEach(function (service) {
+      services.push({
+        image: service.image1,
+        heading: service.name,
+        destinationLink: '/services/' + service.id,
+        subheading: service.areaName,
+        subheadingLink: '/areas/' + service.areaName,
+        summary: service.paragraph1,
+      })
+    })
     return {
       services,
     }
   },
   data() {
     return {
-      adUrl: '',
+      //  adUrl: '',
     }
-  },
-  mounted() {
-    setTimeout(async () => {
-      const { data } = await axios.get('/api/ad')
-      this.adUrl = data.url
-    }, 1000)
   },
   methods: {
     goToService(path) {
