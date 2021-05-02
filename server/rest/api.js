@@ -60,7 +60,7 @@ async function init() {
     //USED IN AREA TEAM PAGE (which requires Person to be included)
     app.get('/area/:name', async (req, res) => {
       const { name } = req.params
-      const area = await Area.findAll ({include:  [Event, Service, Person]})
+      const area = await Area.findByPk (name, {include:  [Event, Service, Person]})
       return res.json(area)
     })
 
