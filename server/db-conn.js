@@ -108,32 +108,31 @@ function defineDatabaseStructure() {
   )
 
   // Creating the N -> N association between Event and Person
-  Event.belongsToMany(Person, { through: 'eventHost' })
-  Person.belongsToMany(Event, { through: 'eventHost' })
+  Event.belongsToMany(Person, { through: 'eventHost' }) //to show hosts in event page
+  //Person.belongsToMany(Event, { through: 'eventHost' }) //not needed
 
-  // Creating the N -> N association between Area and Person
-  Area.belongsToMany(Person, { through: 'employee' })
-  Person.belongsToMany(Area, { through: 'employee' })
-
-  // Creating the N -> N association between Service and Person
-  Service.belongsToMany(Person, { through: 'assistance' })
-  Person.belongsToMany(Service, { through: 'assistance' })
+  // Creating the N -> N association between Service and Person: ASSISTANCE
+  Service.belongsToMany(Person, { through: 'assistance' }) //to show team in service team page
+  Person.belongsToMany(Service, { through: 'assistance' }) //to show tasks in person page
 
   // Creating the 1 -> N association between Event and Area
-  Area.hasMany(Event)
-  Event.belongsTo(Area)
+  Area.hasMany(Event)  //to show events in area page
+  Event.belongsTo(Area) //to show to which area an event belongs
 
-  // Creating the 1 -> N association between Person and Service
-  Person.hasMany(Service, { foreignKey: 'project_manager' })
-  Service.belongsTo(Person)
+  // Creating the 1 -> N association between Person and Service: PROJECT MANAGER
+  Person.hasMany(Service, { foreignKey: 'project_manager' }) //to show "Responsibilities" in person page
+  Service.belongsTo(Person, { foreignKey: 'project_manager' }) //to show "Service PM in Service Team page" NOTE: MAYBE CAN BE EASIER VIA QUERYING
 
-  // Creating the 1 -> N association between Service and Area
-  Area.hasMany(Service)
-  Service.belongsTo(Area)
-
-  // Creating the 1 -> 1 association between Person and Area
-  Person.hasMany(Area, { foreignKey: 'responsible' })
-  Area.belongsTo(Person)
+  // Creating the 1 -> N association between Service and Area: SERVICES RELATED TO AREA
+  Area.hasMany(Service) //to show services in area
+  Service.belongsTo(Area) //NEEDED TO SHOW JUST AREA NAME!
+  
+  // Creating the 1 -> 1 association between Person and Area: RESPONSIBLE. NEEDED FROM BOTH SIDES
+  Person.hasOne(Area, { foreignKey: 'responsible' }) //to show "Responsibilities" in person page
+  Area.belongsTo(Person, { foreignKey: 'responsible' }) //to show "Area responsible in Area Team page" NOTE: MAYBE CAN BE EASIER VIA QUERYING
+  // Creating the N -> N association between Area and Person. EMPLOYEE (WORKS IN AREA)
+  Area.belongsToMany(Person, { through: 'employee' }) //to show team (employees) in area team page
+  Person.belongsToMany(Area, { through: 'employee' }) //to show tasks in person page
 
   db._tables = {
     Event,
