@@ -5,7 +5,7 @@
   ├── image: card image path
   ├── heading: main heading of the card
   ├── destination-link: destination link of the heading and image
-  ├── subheading: subheading of the card
+  ├── subheading: subheading of the card (optional)
   ├── subheading-link: link of the subheading (optional)
   ├── label: additional label of the card (optional)
   ├── label-icon: icon to be shown before the label (optional)
@@ -30,8 +30,11 @@
         </nuxt-link>
       </h3>
 
+      <!-- Label -->
+      <h4 v-if="label != ''"><span :class="labelIcon"></span> {{ label }}</h4>
+
       <!-- Subeading and related icon -->
-      <h4>
+      <h4 v-if="subheading != ''">
         <nuxt-link
           :class="subheadingLink !== '' ? '' : 'disabled-link'"
           :to="subheadingLink"
@@ -39,9 +42,6 @@
           {{ subheading }}
         </nuxt-link>
       </h4>
-
-      <!-- Label -->
-      <h4 v-if="label != ''"><span :class="labelIcon"></span> {{ label }}</h4>
 
       <!-- Summary -->
       <p v-if="summary != ''">{{ summary }}</p>
@@ -63,8 +63,8 @@ export default {
     // destination-link: destination link of the heading and image
     destinationLink: { type: String, default: () => '', required: true },
 
-    // subheading: subheading of the card
-    subheading: { type: String, default: () => '', required: true },
+    // subheading: subheading of the card (optional)
+    subheading: { type: String, default: () => '' },
 
     // subheading-link: link of the subheading (optional)
     subheadingLink: { type: String, default: () => '' },

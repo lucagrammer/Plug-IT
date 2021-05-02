@@ -60,6 +60,11 @@ export default {
       testImage: '/security.png',
     }
   },
+  head() {
+    return {
+      title: 'Plug-IT | About',
+    }
+  },
 }
 </script>
 

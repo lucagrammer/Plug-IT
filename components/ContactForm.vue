@@ -12,134 +12,142 @@
     <h2 class="form-heading">{{ heading }}</h2>
 
     <!-- SEND MESSAGE INTERFACE: form to be filled -->
-    <form v-if="currentnterface == 0" @submit="sendMessage">
-      <input id="pageName" type="hidden" name="pageName" :value="pageName" />
+    <transition name="fade">
+      <form v-if="currentnterface == 0" @submit="sendMessage">
+        <input id="pageName" type="hidden" name="pageName" :value="pageName" />
 
-      <!-- Textual fields of the form -->
-      <div class="form">
-        <div class="textual-fieldset">
-          <div class="field">
-            <label for="name">Name *</label>
-            <input
-              id="name"
-              v-model="name"
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-            />
+        <!-- Textual fields of the form -->
+        <div class="form">
+          <div class="textual-fieldset">
+            <div class="field">
+              <label for="name">Name *</label>
+              <input
+                id="name"
+                v-model="name"
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="surname">Surname *</label>
+              <input
+                id="surname"
+                v-model="surname"
+                type="text"
+                name="surname"
+                placeholder="Surname"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input
+                id="email"
+                v-model="email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
           </div>
-          <div class="field">
-            <label for="surname">Surname *</label>
-            <input
-              id="surname"
-              v-model="surname"
-              type="text"
-              name="surname"
-              placeholder="Surname"
-              required
-            />
+          <div class="textual-fieldset">
+            <div class="field">
+              <label for="message">Message *</label>
+              <textarea
+                id="message"
+                v-model="message"
+                required
+                name="message"
+                maxlength="1000"
+                placeholder="Write here your message"
+              ></textarea>
+            </div>
           </div>
-          <div class="field">
-            <label for="email">Email *</label>
-            <input
-              id="email"
-              v-model="mail"
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-          </div>
-        </div>
-        <div class="textual-fieldset">
-          <div class="field">
-            <label for="message">Message *</label>
-            <textarea
-              id="message"
-              v-model="message"
-              required
-              name="message"
-              maxlength="1000"
-              placeholder="Write here your message"
-            ></textarea>
-          </div>
-        </div>
 
-        <!-- Checkboxes of the form -->
-        <div class="checkbox-fieldset">
-          <div class="field checkbox">
-            <input
-              id="privacy"
-              v-model="privacy"
-              type="checkbox"
-              name="privacy"
-              required
-            />
-            <label for="privacy">
-              Accept privacy policy and terms of service *
-            </label>
+          <!-- Checkboxes of the form -->
+          <div class="checkbox-fieldset">
+            <div class="field checkbox">
+              <input
+                id="privacy"
+                v-model="privacy"
+                type="checkbox"
+                name="privacy"
+                required
+              />
+              <label for="privacy">
+                Accept privacy policy and terms of service *
+              </label>
+            </div>
+            <div class="field checkbox">
+              <input
+                id="commercial"
+                v-model="commercial"
+                type="checkbox"
+                name="commercial"
+              />
+              <label for="commercial">
+                Accept the use of the provided data for commercial and marketing
+                purposes
+              </label>
+            </div>
           </div>
-          <div class="field checkbox">
-            <input
-              id="commercial"
-              v-model="commercial"
-              type="checkbox"
-              name="commercial"
-            />
-            <label for="commercial">
-              Accept the use of the provided data for commercial and marketing
-              purposes
-            </label>
-          </div>
-        </div>
 
-        <!-- Form controls -->
-        <div class="controls">
-          <base-button type="send" label="Send message" icon="mdi mdi-send" />
+          <!-- Form controls -->
+          <div class="controls">
+            <base-button type="send" label="Send message" icon="mdi mdi-send" />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </transition>
 
     <!-- SENDING INTERFACE: on message sentind -->
-    <div v-if="currentnterface == 1">
-      <p class="form-message sending">
-        <span class="mdi mdi-email-sync"></span>Please wait<br />
-        Your message is being sent...
-      </p>
-    </div>
+    <transition name="fade">
+      <div v-if="currentnterface == 1">
+        <p class="form-message sending">
+          <span class="mdi mdi-email-sync"></span>Please wait<br />
+          Your message is being sent...
+        </p>
+      </div>
+    </transition>
 
     <!-- SUCCESSFULLY RESPONSE INTERFACE: on message correctly sent -->
-    <div v-if="currentnterface == 2">
-      <p class="form-message success">
-        <span class="mdi mdi-email-check"></span>
-        Your message has been sent correctly<br />
-        You will receive a reply email in the next few days
-      </p>
-      <div class="controls">
-        <base-button
-          label="Send a new message"
-          icon="mdi mdi-email-plus"
-          @click.native="clearForm"
-        />
+    <transition name="fade">
+      <div v-if="currentnterface == 2">
+        <p class="form-message success">
+          <span class="mdi mdi-email-check"></span>
+          Your message has been sent correctly<br />
+          You will receive a reply email in the next few days
+        </p>
+        <div class="controls">
+          <base-button
+            label="Send a new message"
+            icon="mdi mdi-email-plus"
+            @click.native="clearForm"
+          />
+        </div>
       </div>
-    </div>
+    </transition>
 
     <!-- ERROR RESPONSE INTERFACE: on error -->
-    <div v-if="currentnterface == 3">
-      <p class="form-message failed">
-        <span class="mdi mdi-email-remove"></span>
-        An error occured<br />
-        Please try again later
-      </p>
-      <div class="controls">
-        <base-button
-          label="Try again"
-          icon="mdi mdi-email-plus"
-          @click.native="retry"
-        />
+    <transition name="fade">
+      <div v-if="currentnterface == 3">
+        <p class="form-message failed">
+          <span class="mdi mdi-email-remove"></span>
+          An error occured<br />
+          Please try again later
+        </p>
+        <div class="controls">
+          <base-button
+            label="Try again"
+            icon="mdi mdi-email-plus"
+            @click.native="retry"
+          />
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -300,5 +308,16 @@ textarea:focus,
 select:focus {
   outline-color: black;
   background: rgba(238, 238, 238, 0.9);
+}
+
+/* Fading animation for the transitions  */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

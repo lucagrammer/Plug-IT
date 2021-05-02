@@ -24,13 +24,9 @@ html {
   box-sizing: border-box;
 }
 
-/* Margin to avoid overlap between navbar and nuxt component */
-#__nuxt {
-  margin-top: 70px;
-}
-
 /* Content containers */
 .page-container {
+  margin-top: 70px;
   min-height: 90vh;
   margin-bottom: 50px;
 }
@@ -55,5 +51,27 @@ hr {
 }
 figure img {
   border-radius: 20px;
+}
+address span {
+  font-size: 1.5em;
+}
+address a {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* Flow up animation for page opening */
+@keyframes flowUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0%, 100%, 0); /* traslazione x,y,z*/
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter-active {
+  animation: flowUp 0.2s;
 }
 </style>
