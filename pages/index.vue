@@ -1,5 +1,43 @@
 <template>
   <main class="page-container">
+    <slideshow
+      :slides="[
+        {
+          image: '/slideshow/security.jpg',
+          alt: 'Un tizio',
+          title: 'Discover our latest xxx',
+          description: 'This is a short sentence',
+          link: '/areas/security',
+        },
+        {
+          image: '/slideshow/educational.jpg',
+          alt: 'Un altro tizio',
+          title: 'Discover our latest yyy',
+          description: 'This is a short sentence too',
+          link: '/areas/educational',
+        },
+        {
+          image: '/slideshow/ai.jpg',
+          alt: 'Un altro tizio',
+          title: 'Discover our latest zzz',
+          description: 'This is a short sentence too',
+          link: '/areas/pippo',
+        },
+        {
+          image: '/slideshow/business.jpg',
+          alt: 'Un altro tizio',
+          title: 'Discover our latest qqq',
+          description: 'This is a short sentence too',
+          link: '/areas/pluto',
+        },
+        {
+          image: '/slideshow/iot.jpg',
+          alt: 'Un altro tizio',
+          title: 'Discover our latest fff',
+          description: 'This is a short sentence too',
+        },
+      ]"
+    />
     <section class="section-container">
       <paragraph>
         <h1>Text only paragraph</h1>
@@ -54,6 +92,27 @@
         </p>
       </paragraph>
     </section>
+    <hr />
+    <section class="section-container">
+      <h2>This is a test map</h2>
+      <map-view>
+        <h2>Our Offices</h2>
+        <p>
+          <span class="mdi mdi-map-marker"></span> Via Valtellina, 110
+          <br />
+          20144 Milano, Italia
+        </p>
+        <div class="phone-number">
+          <span class="mdi mdi-phone"></span> Tel:
+          <a href="tel:+393347711504"> +39 334 7711504</a>
+        </div>
+        <div class="phone-number">
+          <span class="mdi mdi-fax"></span> Fax:
+          <a href="fax:+393347711504">+39 011 7400016</a>
+        </div>
+      </map-view>
+    </section>
+    <hr />
     <section class="section-container">
       <contact-form
         heading="If you are interested in this event, please contact us"
@@ -68,12 +127,16 @@ import BaseButton from '~/components/BaseButton.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
 import ContactForm from '~/components/ContactForm.vue'
+import MapView from '~/components/MapView.vue'
+import Slideshow from '~/components/Slideshow.vue'
 export default {
   components: {
     BaseButton,
     Paragraph,
     Grid,
     ContactForm,
+    MapView,
+    Slideshow,
   },
   data() {
     return {
@@ -126,7 +189,7 @@ export default {
           image: 'tizio.jpg',
           heading: 'Mario Rossi',
           destinationLink: '/people/1',
-          subheading: 'Software Engineer',
+          label: 'Software Engineer',
         },
       ],
     }
@@ -134,4 +197,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Enable (locally) overlap between slideshow and navbar */
+.page-container {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+</style>
