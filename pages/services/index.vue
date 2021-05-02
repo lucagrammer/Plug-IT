@@ -1,51 +1,84 @@
 <template>
   <main class="page-container">
+    <!-- FILTERING OPTIONS -->
     <section class="section-container">
-      <h1>Our Services</h1>
+      <breadcrumb current-page="Our Services" />
+      <select-filter @filter-change="filterByArea" />
     </section>
     <hr />
+
+    <!-- SERVICE RESULTS -->
     <section class="section-container">
-      <grid :elements="services" />
+      <!-- Grid of services -->
+      <grid v-if="matchCounter > 0" :elements="services" />
+
+      <!-- Loading message -->
+      <p v-else class="loading">
+        <span class="mdi mdi-progress-clock"></span>
+        Loading...
+      </p>
     </section>
-    <hr />
   </main>
 </template>
 
 <script>
-// import axios from 'axios'
 import Grid from '~/components/grids/Grid.vue'
 export default {
   components: {
     Grid,
   },
   async asyncData({ $axios }) {
+    // fetch the services from the database
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/services`)
-    const services = []
+    const fetchedServices = []
     data.forEach(function (service) {
-      services.push({
+      fetchedServices.push({
         image: service.image1,
         heading: service.name,
         destinationLink: '/services/' + service.id,
         subheading: service.areaName,
         subheadingLink: '/areas/' + service.areaName,
         summary: service.paragraph1,
+        area: service.areaName, // additional property fot filtering purposes
       })
     })
     return {
-      services,
+      fetchedServices,
     }
   },
   data() {
     return {
-      //  adUrl: '',
+      // Default option for area
+      selectedArea: 'All',
     }
   },
+  computed: {
+    // Compute the services to be shown based on the selected area
+    services() {
+      if (this.fetchedServices === undefined) return []
+      return this.fetchedServices.filter(
+        (ev) => this.selectedArea === ev.area || this.selectedArea === 'All'
+      )
+    },
+
+    // Compute the number of showed services
+    matchCounter() {
+      return this.services.length
+    },
+  },
   methods: {
-    goToService(path) {
-      this.$router.push({ path })
+    // Change the area filter option
+    filterByArea(chosenValue) {
+      this.selectedArea = chosenValue
     },
   },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Appearance of the loading message */
+.loading {
+  text-align: center;
+  margin-top: 20vh;
+}
+</style>
