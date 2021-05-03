@@ -4,7 +4,7 @@
       <breadcrumb current-page="People" />
       <paragraph
         image="people.jpeg"
-        image-cap="Image of a plug-it team at work around a desk"
+        image-cap="A Plug-IT team at work around a desk"
         position="left"
       >
         <p>
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
 
