@@ -226,7 +226,7 @@ export default {
 /* Center the form container */
 .form {
   margin: auto;
-  max-width: 600px;
+  max-width: 650px;
 }
 
 /* Center the form heading and the messages */

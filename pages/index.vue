@@ -3,139 +3,88 @@
     <slideshow
       :slides="[
         {
-          image: '/slideshow/security.jpg',
+          image: '/services/IHC.jpeg',
           alt: 'Un tizio',
-          title: 'Discover our latest xxx',
-          description: 'This is a short sentence',
-          link: '/areas/security',
+          title: 'Smart Offices at their best with IHC',
+          description:
+            'We help you connect your services together in remarkable new ways. IHC is the easiest way to do more with apps and devices like Twitter, Dropbox, iRobot, Fitbit, Alexa and much more',
+          link: '/services/12',
         },
         {
-          image: '/slideshow/educational.jpg',
-          alt: 'Un altro tizio',
-          title: 'Discover our latest yyy',
-          description: 'This is a short sentence too',
-          link: '/areas/educational',
+          image: '/services/PhishTreat.jpeg',
+          alt: 'Un tizio',
+          title: 'Stay safe thanks to Phish Threat',
+          description:
+            'Attacks have shown record growth in recent years, and a solid security awareness program is an integral part of any defence-in-depth strategy',
+          link: '/services/13',
         },
         {
-          image: '/slideshow/ai.jpg',
-          alt: 'Un altro tizio',
-          title: 'Discover our latest zzz',
-          description: 'This is a short sentence too',
-          link: '/areas/pippo',
-        },
-        {
-          image: '/slideshow/business.jpg',
-          alt: 'Un altro tizio',
-          title: 'Discover our latest qqq',
-          description: 'This is a short sentence too',
-          link: '/areas/pluto',
-        },
-        {
-          image: '/slideshow/iot.jpg',
-          alt: 'Un altro tizio',
-          title: 'Discover our latest fff',
-          description: 'This is a short sentence too',
+          image: '/services/PowerBI.jpg',
+          alt: 'Un tizio',
+          title: 'Discover hidden data with PowerBI',
+          description:
+            'Unleash the potential of your business data and achieve success in your business. With PowerBI you can analyse turnover, sales network results, costs and forecasts in just a few clicks. ',
+          link: '/services/13',
         },
       ]"
     />
     <section class="section-container">
-      <paragraph>
-        <h1>Text only paragraph</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum'.
-        </p>
-      </paragraph>
+      <nuxt-link to="/test">Go to TEST PAGE</nuxt-link>
+      <h2>Upcoming Events</h2>
+      <grid :elements="upcomingEvents" />
     </section>
-    <hr />
-    <section class="section-container">
-      <h2>A grid example</h2>
-      <grid :featured-element="featuredElement" :elements="testElements" />
-    </section>
-    <hr />
-    <section class="section-container">
-      <paragraph
-        :image="testImage"
-        image-cap="A man in front of a PC writing code"
-        position="left"
-      >
-        <h2>Left paragraph</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum'.
-        </p>
-        <base-button
-          label="Button component with lorem ipsum"
-          icon="mdi mdi-account-multiple"
-        ></base-button>
-      </paragraph>
-      <paragraph :image="testImage" image-cap="Bits flowing" position="right">
-        <h2>Right one</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum'
-        </p>
-      </paragraph>
-    </section>
-    <hr />
-    <section class="section-container">
-      <h2>This is a test map</h2>
-      <map-view>
-        <h2>Our Offices</h2>
-        <p>
-          <span class="mdi mdi-map-marker"></span> Via Valtellina, 110
-          <br />
-          20144 Milano, Italia
-        </p>
-        <div class="phone-number">
-          <span class="mdi mdi-phone"></span> Tel:
-          <a href="tel:+393347711504"> +39 334 7711504</a>
-        </div>
-        <div class="phone-number">
-          <span class="mdi mdi-fax"></span> Fax:
-          <a href="fax:+393347711504">+39 011 7400016</a>
-        </div>
-      </map-view>
-    </section>
-    <hr />
-    <section class="section-container">
-      <contact-form
-        heading="If you are interested in this event, please contact us"
-        page-name="pippo"
-      />
-    </section>
+    <slideshow
+      :slides="[
+        {
+          image: '/slideshow/security.jpg',
+          alt: 'Security algorithm code. Discover more.',
+          title: 'Manage the digital risk of your enterprise',
+          description:
+            'We combine security technology engineering and out intelligence expertise to help companies manage digital risk end-to-end.',
+          link: '/areas/security',
+        },
+        {
+          image: '/slideshow/educational.jpeg',
+          alt: 'Children with hands up. Discover more.',
+          title: 'Expand learning for everyone',
+          description:
+            'Transform how educators and students learn, work, and innovate together.',
+          link: '/areas/educational',
+        },
+        {
+          image: '/slideshow/ai.jpg',
+          alt: 'A network of artificial intelligence links. Discover more.',
+          title: 'Unlock new possibilities with AI',
+          description:
+            'We embed AI capabilities in our software to provide you with more intelligent, automated solutions',
+          link: '/areas/pippo',
+        },
+        {
+          image: '/slideshow/business.jpg',
+          alt: 'A glass facade of a building. Discover more.',
+          title: 'Flexible systems for business management.',
+          description:
+            'Our solutions simplify IT management and allow company to use technology in order to reduce costs and support the company growth',
+          link: '/areas/pluto',
+        },
+        {
+          image: '/slideshow/iot.jpg',
+          alt: 'Tangles of electrical wires. Discover more.',
+          title: 'Full-stack IoT solutions',
+          description:
+            'We design future-ready IoT architectures, assemble enterprise-grade IoT data pipelines and deliver the insights our customers need to implement IoT initiatives.',
+        },
+      ]"
+    />
   </main>
 </template>
 
 <script>
-import BaseButton from '~/components/BaseButton.vue'
 import Grid from '~/components/grids/Grid.vue'
-import Paragraph from '~/components/Paragraph.vue'
-import ContactForm from '~/components/ContactForm.vue'
-import MapView from '~/components/MapView.vue'
 import Slideshow from '~/components/Slideshow.vue'
 export default {
   components: {
-    BaseButton,
-    Paragraph,
     Grid,
-    ContactForm,
-    MapView,
     Slideshow,
   },
   data() {

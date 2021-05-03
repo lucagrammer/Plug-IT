@@ -22,6 +22,7 @@ export default {
 html {
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
+  letter-spacing: 0.4px;
 }
 
 /* Content containers */
@@ -58,6 +59,13 @@ address span {
 address a {
   display: inline-block;
   margin-bottom: 5px;
+}
+ul {
+  padding-left: 20px;
+  list-style-type: square;
+}
+li {
+  margin-bottom: 20px;
 }
 
 /* Flow up animation for page opening */

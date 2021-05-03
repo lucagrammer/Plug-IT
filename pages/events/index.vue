@@ -79,7 +79,7 @@ export default {
             ((this.today < ev.date && this.selectedTab === 0) ||
               (this.today > ev.date && this.selectedTab === 1))
         )
-        .sort((ev1, ev2) => ev2.date - ev1.date)
+        .sort((ev1, ev2) => ev1.date - ev2.date)
     },
 
     // Compute the number of showed events
