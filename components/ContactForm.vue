@@ -180,10 +180,9 @@ export default {
     // Send the message to the server updating the interface according to the outcome
     sendMessage(e) {
       e.preventDefault()
-      if (this.privacy==true) {
       this.currentnterface = 1 // Display the loading interface
       this.$axios
-        .put(`${process.env.BASE_URL}/api/message`, {
+        .post(`${process.env.BASE_URL}/api/message`, {
           name: this.name,
           surname: this.surname,
           email: this.email,
@@ -197,10 +196,6 @@ export default {
         .catch(() => {
           this.currentnterface = 3 // Display the error interface
         })
-      } else {
-          alert("privacy not accepted: this must be written in a field")
-      }
-      }
     },
 
     // Display again the form to be filled in

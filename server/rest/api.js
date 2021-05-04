@@ -9,13 +9,7 @@ async function init() {
   // Call the init function that returns the Database
   const db = await initializeDatabase()
   // Let's extract all the objects we need to perform queries inside the endpoints
-  const {
-    Event,
-    Person,
-    Area,
-    Service,
-    Message,
-   } = db._tables
+  const { Event, Person, Area, Service, Message } = db._tables
 
   // _____________EVENTS_________________
   // API to get all the Events
@@ -24,7 +18,7 @@ async function init() {
     const events = await Event.findAll()
     return res.json(events)
   })
-  
+
   // NOTE: ALL THE EVENTS IN EVENTS PAGE CAN BE RETRIEVED BY RETRIEVING AREA, SO THE FILTER WILL BE POPULATED AND EVENTS ARE SHOWN;
   // ALTERNATIVE IS FILTERING CLIENT SIDE.
   // ANTOHER ALTERNATIVE IS:
@@ -34,16 +28,16 @@ async function init() {
     const { area } = req.params
     const event = await Event.findAll({
       where: {
-      area_name: area
-    }
-  })
+        area_name: area,
+      },
+    })
     return res.json(service)
   })
-    // API to get a event by ID.
+  // API to get a event by ID.
   // USED IN EVENT PAGE
   app.get('/event/:id', async (req, res) => {
     const { id } = req.params
-    const event = await Event.findByPk(id, {include: Person})
+    const event = await Event.findByPk(id, { include: Person })
     return res.json(event)
   })
 
@@ -55,15 +49,16 @@ async function init() {
     return res.json(areas)
   })
 
-    // API to get an area - will get all events by navigation, so no need to explicitly fetch events by area. Event, Service and Person are eagerly fetched to populate the Area page
-    // USED IN AREA PAGE
-    // USED IN AREA TEAM PAGE (which requires Person to be included)
-    app.get('/area/:name', async (req, res) => {
-      const { name } = req.params
-      const area = await Area.findByPk (name, {include:  [Event, Service, Person]})
-      return res.json(area)
+  // API to get an area - will get all events by navigation, so no need to explicitly fetch events by area. Event, Service and Person are eagerly fetched to populate the Area page
+  // USED IN AREA PAGE
+  // USED IN AREA TEAM PAGE (which requires Person to be included)
+  app.get('/area/:name', async (req, res) => {
+    const { name } = req.params
+    const area = await Area.findByPk(name, {
+      include: [Event, Service, Person],
     })
-
+    return res.json(area)
+  })
 
   // _______________PEOPLE_______________________
   // API to get all the people
@@ -77,7 +72,7 @@ async function init() {
   // USED IN PERSON PAGE
   app.get('/person/:id', async (req, res) => {
     const { id } = req.params
-    const person = await Person.findByPk(id, {include: Service})
+    const person = await Person.findByPk(id, { include: Service })
     return res.json(person)
   })
 
@@ -96,31 +91,34 @@ async function init() {
     const { area } = req.params
     const service = await Service.findAll({
       where: {
-      area_name: area
-    }
-  })
+        area_name: area,
+      },
+    })
     return res.json(service)
   })
-  
+
   // API to get a service by ID.
   // USED IN Service Page
   // USED IN SERVICE TEAM PAGE (which requires "Person" to be included)
   app.get('/service/:id', async (req, res) => {
     const { id } = req.params
-    const service = await Service.findByPk(id, {include: Person})
+    const service = await Service.findByPk(id, { include: Person })
     return res.json(service)
   })
 
-    app.post('/message', async (req, res) => {
-    const { name, surname, email, subject, message } = req.params
-    message=Message.build( {
+  app.post('/message', async (req, res) => {
+    console.log(req.body)
+    const { name, surname, email, subject, message } = req.body
+    console.log(name)
+    const messageObj = Message.build({
       name: name,
       surname: surname,
       email: email,
       subject: subject,
-      message: message
-    } )
-    await Message.save()
+      message: message,
+    })
+    await messageObj.save()
+    res.sendStatus(200)
   })
 }
 

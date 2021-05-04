@@ -116,7 +116,7 @@ function defineDatabaseStructure() {
   Person.belongsToMany(Service, { through: 'assistance' }) //to show tasks in person page
 
   // Creating the 1 -> N association between Event and Area
-  Area.hasMany(Event)  //to show events in area page
+  Area.hasMany(Event) //to show events in area page
   Event.belongsTo(Area) //to show to which area an event belongs
 
   // Creating the 1 -> N association between Person and Service: PROJECT MANAGER
@@ -126,7 +126,7 @@ function defineDatabaseStructure() {
   // Creating the 1 -> N association between Service and Area: SERVICES RELATED TO AREA
   Area.hasMany(Service) //to show services in area
   Service.belongsTo(Area) //NEEDED TO SHOW JUST AREA NAME!
-  
+
   // Creating the 1 -> 1 association between Person and Area: RESPONSIBLE. NEEDED FROM BOTH SIDES
   Person.hasOne(Area, { foreignKey: 'responsible' }) //to show "Responsibilities" in person page
   Area.belongsTo(Person, { foreignKey: 'responsible' }) //to show "Area responsible in Area Team page" NOTE: MAYBE CAN BE EASIER VIA QUERYING
