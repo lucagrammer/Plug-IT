@@ -4,6 +4,10 @@ export default {
     navigateTo(path) {
       this.$router.push(path)
     },
+    // Open link
+    navigateToExternal(path) {
+      window.open('https://' + path, '_blank')
+    },
   },
 }
 

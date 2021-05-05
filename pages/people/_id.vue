@@ -1,28 +1,48 @@
 <template>
   <main class="page-container">
     <section class="section-container">
-      <h1>Mario Rossi</h1>
-      <paragraph :image="testImage" :image-cap="testCap" position="right">
-        <h2></h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum'
-        </p>
-        <base-button
-          label="Button component with lorem ipsum"
-          icon="mdi mdi-account-multiple"
-        ></base-button>
+      <breadcrumb
+        :default-route="[{ title: 'People', path: '/people' }]"
+        :alt-routes="[
+          [
+            { title: person.area, path: '/areas/ID' },
+            { title: 'AREANAME Team', path: '/areas/ID/team' },
+          ],
+          [
+            { title: 'SERVICENAME', path: '/services/ID' },
+            { title: 'SERVICENAME Team', path: '/services/ID/team' },
+          ],
+          [
+            { title: 'Events', path: '/events' },
+            { title: 'EVENTNAME', path: '/events/ID' },
+          ],
+        ]"
+        current-page="PERSONNAME"
+      />
+      <div class="position-label">{{ person.position }}</div>
+      <paragraph
+        :image="person.image"
+        :image-cap="person.imageCap"
+        position="right"
+      >
+        <p>{{ person.bio }}</p>
+        <a
+          :href="person.linkedin"
+          target="_blank"
+          rel="noopener"
+          aria-label="personal-linkedin-page"
+          ><base-button
+            icon="mdi mdi-linkedin"
+            label="Find me on Linkedin"
+            @click.native="navigateToExternal('www.linkedin.com')"
+          ></base-button
+        ></a>
       </paragraph>
     </section>
     <hr />
-    <section class="section-container">
+    <section v-if="person.responsibilities" class="section-container">
       <h2>Responsibilities</h2>
-      <grid :elements="responsabilities" />
+      <grid :elements="person.responsabilities" />
     </section>
     <hr />
     <section class="section-container">
@@ -36,11 +56,48 @@
 import BaseButton from '~/components/BaseButton.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
+import RoutingMixins from '~/mixins/Routing.js'
 export default {
   components: {
     BaseButton,
     Paragraph,
     Grid,
+  },
+  mixins: [RoutingMixins],
+  async asyncData({ $axios, route }) {
+    const { id } = route.params
+    const { data } = await $axios.get(
+      `${process.env.BASE_URL}/api/people/${id}`
+    )
+    const person = {
+      name: data.name + ' ' + data.surname,
+      image: data.image,
+      bio: data.bio,
+      position: data.position,
+      linkedin: data.linkedin,
+      responsibilities:
+        data.responsibility !== undefined
+          ? {
+              image: data.responsibility.image,
+              heading: data.responsibility.name,
+              destinationLink: '/areas/' + data.responsibility.id,
+            }
+          : undefined,
+    }
+    const tasks = []
+    data.services.forEach(function (service) {
+      tasks.push({
+        image: service.image1,
+        heading: service.name,
+        destinationLink: '/services/' + service.id,
+        subheading: service.areaName,
+        subheadingLink: '/areas/' + service.areaName,
+      })
+    })
+    return {
+      person,
+      tasks,
+    }
   },
   data() {
     return {
