@@ -1,6 +1,6 @@
 <!--
   Component: Grid
-  Description: A grid of cards
+  Description: A responsive grid of made up of Card elements
   Props:
   ├── featured-element: featured card component props (optional)
   └── elements: array of card component props
@@ -68,7 +68,7 @@ export default {
 /* Grid spacing */
 .grid {
   margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
   width: 100%;
   display: flow-root;
 }

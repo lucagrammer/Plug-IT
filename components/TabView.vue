@@ -61,6 +61,7 @@ export default {
 
 /* Tab heading spacing and positioning */
 .tab-heading {
+  cursor: pointer;
   padding-bottom: 7px;
   display: inline-block;
 }

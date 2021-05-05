@@ -13,7 +13,7 @@
 
     <!-- SEND MESSAGE INTERFACE: form to be filled -->
     <transition name="fade">
-      <form v-if="currentnterface == 0" @submit="sendMessage">
+      <form v-if="currentInterface == 0" @submit="sendMessage">
         <input id="pageName" type="hidden" name="pageName" :value="pageName" />
 
         <!-- Textual fields of the form -->
@@ -105,7 +105,7 @@
 
     <!-- SENDING INTERFACE: on message sentind -->
     <transition name="fade">
-      <div v-if="currentnterface == 1">
+      <div v-if="currentInterface == 1">
         <p class="form-message sending">
           <span class="mdi mdi-email-sync"></span>Please wait<br />
           Your message is being sent...
@@ -115,11 +115,11 @@
 
     <!-- SUCCESSFULLY RESPONSE INTERFACE: on message correctly sent -->
     <transition name="fade">
-      <div v-if="currentnterface == 2">
+      <div v-if="currentInterface == 2">
         <p class="form-message success">
           <span class="mdi mdi-email-check"></span>
           Your message has been sent correctly<br />
-          You will receive a reply email in the next few days
+          You will receive a reply in the next few days
         </p>
         <div class="controls">
           <base-button
@@ -133,7 +133,7 @@
 
     <!-- ERROR RESPONSE INTERFACE: on error -->
     <transition name="fade">
-      <div v-if="currentnterface == 3">
+      <div v-if="currentInterface == 3">
         <p class="form-message failed">
           <span class="mdi mdi-email-remove"></span>
           An error occured<br />
@@ -165,7 +165,7 @@ export default {
   data() {
     return {
       // Current interface displayed for the form
-      currentnterface: 0,
+      currentInterface: 0,
 
       // Form fields
       name: null,
@@ -180,7 +180,7 @@ export default {
     // Send the message to the server updating the interface according to the outcome
     sendMessage(e) {
       e.preventDefault()
-      this.currentnterface = 1 // Display the loading interface
+      this.currentInterface = 1 // Display the loading interface
       this.$axios
         .post(`${process.env.BASE_URL}/api/message`, {
           name: this.name,
@@ -191,27 +191,26 @@ export default {
           commercial: this.commercial,
         })
         .then(() => {
-          this.currentnterface = 2 // Display the success interface
+          this.currentInterface = 2 // Display the success interface
         })
         .catch(() => {
-          this.currentnterface = 3 // Display the error interface
+          this.currentInterface = 3 // Display the error interface
         })
     },
 
     // Display again the form to be filled in
     retry() {
-      this.currentnterface = 0
+      this.currentInterface = 0
     },
 
     // Clear the form and display it to the user
     clearForm() {
       this.name = null
       this.surname = null
-      this.mail = null
       this.message = null
       this.privacy = null
       this.commercial = null
-      this.currentnterface = 0
+      this.currentInterface = 0
     },
   },
 }

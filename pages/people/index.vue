@@ -8,14 +8,17 @@
         position="left"
       >
         <p>
-          <i>Plug-IT</i> is made up of talented individuals who share a
+          Plug-IT is made up of talented individuals who share a
           <strong>passion</strong>
           for achieving the best in everything they do. Our team puts
           <strong>our clients first</strong>, with a relentless focus on
           championing bold ideas that help them achieve the extraordinary.
-          <br />
+        </p>
+        <p>
           In every office, on every team, you’ll find passionate, collaborative
-          people who care for you and your success.
+          people who care for you and your success. We take a proactive approach
+          to helping you develop a strategy to address your goals and
+          objectives, using the most efficient methods available.
         </p>
       </paragraph>
     </section>
