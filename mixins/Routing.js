@@ -1,12 +1,12 @@
 export default {
   methods: {
-    // Navigate to a specified path
+    /** Navigate to a specified internal path */
     navigateTo(path) {
       this.$router.push(path)
     },
-    // Open link
+    /** Open and external link */
     navigateToExternal(path) {
-      window.open('https://' + path, '_blank')
+      window.open(path, '_blank')
     },
   },
 }
