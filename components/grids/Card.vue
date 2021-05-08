@@ -17,7 +17,7 @@
     <!-- Right card image -->
     <div class="card-image">
       <figure class="wrapper" @click="navigateTo(destinationLink)">
-        <img :src="image" :alt="heading + ' Discover more.'" />
+        <img :src="image" :alt="heading + '. Discover more.'" />
       </figure>
     </div>
 

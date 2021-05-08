@@ -67,6 +67,13 @@ ul {
 li {
   margin-bottom: 20px;
 }
+.area-label {
+  text-transform: uppercase;
+}
+.error-messages {
+  text-align: center;
+  margin-top: 30vh;
+}
 
 /* Flow up animation for page opening */
 @keyframes flowUp {

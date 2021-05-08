@@ -3,7 +3,7 @@
   Description: Slideshow of images with a Paragraph inside
   Props:
   ├── slides: array of objects, each containing image, alt, title, description, labelType (optional, either 'popular' or 'new') and link
-  └── time-per-slides: time in milliseconds for each slide. Default value: 6sec
+  └── time-per-slides: time in milliseconds for each slide. Default value: 5sec
 -->
 
 <template>
@@ -77,8 +77,8 @@ export default {
     // slides: array of objects containing image, alt, title, description and link for each slide
     slides: { type: Array, default: () => [], required: true },
 
-    // time-per-slides: time in milliseconds for each slide. Default value: 6sec
-    timePerSlide: { type: Number, default: () => 600000 },
+    // time-per-slides: time in milliseconds for each slide. Default value: 5sec
+    timePerSlide: { type: Number, default: () => 5000 },
   },
   data() {
     return {

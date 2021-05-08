@@ -61,6 +61,16 @@ address :first-child {
   margin-top: 0px;
 }
 
+/* Styling of the slot components */
+p {
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+h2,
+h3 {
+  margin-bottom: 0px;
+}
+
 /* Map layout */
 .map {
   width: 100%;
