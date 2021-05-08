@@ -2,10 +2,13 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: 'SERVICENAME', path: '/services/ID' }]"
-        current-page="SERVICENAME Team"
+        :default-route="[
+          { title: serviceName, path: '/services/' + serviceID },
+        ]"
+        :current-page="serviceName + ' Team'"
       />
-      <!-- Grid of people -->
+
+      <!-- GRID OF PEOPLE -->
       <grid :featured-element="projectManager" :elements="assistance" />
     </section>
   </main>
@@ -19,28 +22,42 @@ export default {
     Breadcrumb,
     Grid,
   },
-  async asyncData({ $axios, route }) {
+  async asyncData({ $axios, route, redirect }) {
+    const serviceID = route.params.id
+
     // fetch people from the database
-    const { id } = route.params
     const { data } = await $axios.get(
-      `${process.env.BASE_URL}/api/people/${id}`
-    ) // TODO: missing api
+      `${process.env.BASE_URL}/api/serviceteam/${serviceID}`
+    )
+    if (data === null) {
+      return redirect(
+        '/error?err=The service you are looking for does not exist.'
+      )
+    }
+
+    // parameters required by the breadcrumb component of the destination page
+    const fromTeamToPeople =
+      '?route=1&sID=' + serviceID + '&service=' + data.name
+
+    // convert the fetched data into the format required by the components
     const projectManager = {
       heading: data.pm.name + ' ' + data.pm.surname,
       image: data.pm.image,
-      destinationLink: '/people/' + data.pm.id + '?route=1',
+      destinationLink: '/people/' + data.pm.id + fromTeamToPeople,
       subheading: data.pm.position,
     }
     const assistance = []
-    data.assistance.forEach(function (assistant) {
+    data.assistants.forEach(function (assistant) {
       assistance.push({
         image: assistant.image,
         heading: assistant.name + ' ' + assistant.surname,
-        destinationLink: '/people/' + assistant.id + '?route=1',
+        destinationLink: '/people/' + assistant.id + fromTeamToPeople,
         subheading: assistant.position,
       })
     })
     return {
+      serviceID,
+      serviceName: data.name,
       projectManager,
       assistance,
     }

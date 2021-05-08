@@ -15,7 +15,7 @@
       <!-- Loading message -->
       <p v-else class="loading">
         <span class="mdi mdi-progress-clock"></span>
-        Loading...
+        No service found
       </p>
     </section>
   </main>
@@ -27,18 +27,28 @@ export default {
   components: {
     Grid,
   },
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, redirect }) {
     // fetch the services from the database
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/services`)
+    if (data === null || data.length === 0) {
+      return redirect(
+        '/error?err=Failed to retrieve sercives data. Try again later.'
+      )
+    }
+
+    // parameters required by the breadcrumb component of the destination page
+    const fromServicesToArea = '?route=4'
+
+    // convert the fetched data into the format required by the components
     const fetchedServices = []
     data.forEach(function (service) {
       fetchedServices.push({
-        image: service.image1,
+        image: service.icon,
         heading: service.name,
         destinationLink: '/services/' + service.id,
         subheading: service.areaName,
-        subheadingLink: '/areas/' + service.areaName,
-        summary: service.paragraph1,
+        subheadingLink: '/areas/' + service.areaName + fromServicesToArea,
+        summary: service.slogan,
         area: service.areaName, // additional property fot filtering purposes
       })
     })
