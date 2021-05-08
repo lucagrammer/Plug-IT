@@ -24,24 +24,24 @@
     <!-- Structured card description -->
     <div class="card-description">
       <!-- Heading -->
-      <h3>
+      <h2>
         <nuxt-link :to="destinationLink">
           {{ heading }}
         </nuxt-link>
-      </h3>
+      </h2>
 
       <!-- Label -->
-      <h4 v-if="label != ''"><span :class="labelIcon"></span> {{ label }}</h4>
+      <h3 v-if="label != ''"><span :class="labelIcon"></span> {{ label }}</h3>
 
       <!-- Subeading and related icon -->
-      <h4 v-if="subheading != ''">
+      <h3 v-if="subheading != ''">
         <nuxt-link
           :class="subheadingLink !== '' ? '' : 'disabled-link'"
           :to="subheadingLink"
         >
           {{ subheading }}
         </nuxt-link>
-      </h4>
+      </h3>
 
       <!-- Summary -->
       <p v-if="summary != ''">{{ summary }}</p>
@@ -109,14 +109,15 @@ export default {
 img {
   height: 100px;
   width: 100px;
+  cursor: pointer;
 }
-h3 {
+h2 {
   margin-top: 0px;
   margin-bottom: 4px;
   font-weight: 600;
   font-size: 21px;
 }
-h4 {
+h3 {
   margin: 0px;
   font-size: 18px;
   font-weight: 400;

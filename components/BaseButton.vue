@@ -64,6 +64,7 @@ button {
   text-decoration: none;
   margin-block-start: 1em;
   margin-block-end: 1em;
+  cursor: pointer;
 }
 button:hover {
   background-color: transparent;

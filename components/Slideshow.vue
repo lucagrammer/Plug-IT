@@ -2,7 +2,7 @@
   Component: Slideshow
   Description: Slideshow of images with a Paragraph inside
   Props:
-  ├── slides: array of objects, each containing image, alt, title, description and link
+  ├── slides: array of objects, each containing image, alt, title, description, labelType (optional, either 'popular' or 'new') and link
   └── time-per-slides: time in milliseconds for each slide. Default value: 6sec
 -->
 
@@ -27,7 +27,18 @@
         <section class="slide-body-container">
           <paragraph>
             <nuxt-link :to="slide.link !== undefined ? slide.link : ''">
-              <h1>{{ slide.title }}</h1>
+              <div class="title">
+                <h1>
+                  {{ slide.title }}
+                </h1>
+                <!-- Labels -->
+                <div v-if="slide.labelType === 'new'" class="label new">
+                  New service
+                </div>
+                <div v-if="slide.labelType === 'popular'" class="label popular">
+                  Popular service
+                </div>
+              </div>
             </nuxt-link>
             <p>
               {{ slide.description }}
@@ -67,7 +78,7 @@ export default {
     slides: { type: Array, default: () => [], required: true },
 
     // time-per-slides: time in milliseconds for each slide. Default value: 6sec
-    timePerSlide: { type: Number, default: () => 6000 },
+    timePerSlide: { type: Number, default: () => 600000 },
   },
   data() {
     return {
@@ -132,13 +143,14 @@ export default {
 <style scoped>
 /* Component containers  */
 .slider-container {
-  height: 85vh;
+  height: 90vh;
   min-height: 520px;
   position: relative;
 }
 .image-container {
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -148,9 +160,9 @@ export default {
 .slide-body-container {
   position: absolute;
   bottom: 0;
-  padding-left: 20%;
-  padding-right: 20%;
-  width: 60%;
+  padding-left: 17.5%;
+  padding-right: 17.5%;
+  width: 65%;
   min-height: 150px;
   padding-bottom: 40px;
   background: rgba(238, 238, 238, 0.9);
@@ -162,7 +174,10 @@ export default {
   position: relative;
   font-size: 55px;
   display: inline-block;
-  top: 75%;
+  top: 50%;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  cursor: pointer;
 }
 .next {
   float: right;
@@ -181,6 +196,40 @@ export default {
 .dot {
   margin-left: 8px;
   margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Styling of the label 'new' and 'popular' */
+.title {
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+.title > h1 {
+  display: inline;
+  vertical-align: middle;
+}
+.label {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: initial;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 20px;
+  margin-left: 4px;
+  margin-top: 4px;
+}
+.new {
+  border-color: rgb(211, 57, 1);
+  color: rgb(211, 57, 1);
+}
+.popular {
+  border-color: rgb(0, 74, 184);
+  color: rgb(0, 74, 184);
+}
+p {
+  margin-bottom: 5px;
 }
 
 /* Fade animation on slide change */
