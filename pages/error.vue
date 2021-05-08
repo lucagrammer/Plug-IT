@@ -1,8 +1,8 @@
 <template>
   <main class="page-container">
     <section class="section-container error-messages">
-      <h1>Page Not Found</h1>
-      <p>We can't find the page you are looking for.</p>
+      <h1><span class="mdi mdi-alert-circle"></span><br />An error occurred</h1>
+      <p>{{ $route.query.err }}</p>
       <base-button
         label="Go to the homepage"
         icon="mdi mdi-home-variant"

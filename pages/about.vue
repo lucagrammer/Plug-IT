@@ -64,7 +64,7 @@
         image-cap="Man standing in front of people sitting beside table with laptop computers during a meeting"
         position="right"
       >
-        <h2>Our values</h2>
+        <h2>Our Values</h2>
         <p>
           Plug-IT runs <i><b>mission-critical systems</b></i> with the latest
           technology innovations to deliver better business outcomes and new
