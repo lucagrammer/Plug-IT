@@ -2,11 +2,12 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: 'AREANAME', path: '/areas/ID' }]"
-        current-page="AREANAME Team"
+        :default-route="[{ title: areaName, path: '/areas/' + areaName }]"
+        :current-page="areaName + ' Team'"
       />
-      <!-- Grid of people -->
-      <grid :featured-element="responsible" :elements="employees" />
+
+      <!-- GRID OF PEOPLE -->
+      <grid :featured-element="responsible" :elements="workers" />
     </section>
   </main>
 </template>
@@ -14,35 +15,54 @@
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
+import RoutingMixins from '~/mixins/Routing.js'
 export default {
   components: {
     Breadcrumb,
     Grid,
   },
-  async asyncData({ $axios, route }) {
+  mixins: [RoutingMixins],
+  async asyncData({ $axios, route, redirect }) {
+    const areaName = route.params.id
+
     // fetch people from the database
-    const { id } = route.params
     const { data } = await $axios.get(
-      `${process.env.BASE_URL}/api/people/${id}`
-    ) // TODO: missing api
-    const responsible = {
-      heading: data.responsible.name + ' ' + data.responsible.surname,
-      image: data.responsible.image,
-      destinationLink: '/people/' + data.responsible.id + '?route=1',
-      subheading: data.responsible.position,
+      `${process.env.BASE_URL}/api/areateam/${areaName}`
+    )
+    if (data === null) {
+      return redirect('/error?err=The area you are looking for does not exist.')
     }
-    const employees = []
-    data.assistance.forEach(function (employee) {
-      employees.push({
-        image: employee.image,
-        heading: employee.name + ' ' + employee.surname,
-        destinationLink: '/people/' + employee.id + '?route=1',
-        subheading: employee.position,
+
+    // parameters required by the breadcrumb component of the destination page
+    const fromTeamToPeople = '?route=0&area=' + areaName
+
+    // convert the fetched data into the format required by the components
+    const responsible = {
+      heading:
+        data.area_responsible[0].name + ' ' + data.area_responsible[0].surname,
+      image: data.area_responsible[0].image,
+      destinationLink:
+        '/people/' + data.area_responsible[0].id + fromTeamToPeople,
+      subheading: 'Area Responsible',
+    }
+    const workers = []
+    data.workers.forEach(function (worker) {
+      workers.push({
+        image: worker.image,
+        heading: worker.name + ' ' + worker.surname,
+        destinationLink: '/people/' + worker.id + fromTeamToPeople,
+        subheading: worker.position,
       })
     })
     return {
       responsible,
-      employees,
+      workers,
+    }
+  },
+  data() {
+    return {
+      // The name of the area
+      areaName: this.$route.params.id,
     }
   },
 }
