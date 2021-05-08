@@ -21,7 +21,6 @@ function defineDatabaseStructure() {
     {
       name: DataTypes.STRING,
       surname: DataTypes.STRING,
-      email: DataTypes.STRING,
       bio: DataTypes.TEXT,
       image: DataTypes.STRING,
       position: DataTypes.STRING,
@@ -29,8 +28,10 @@ function defineDatabaseStructure() {
     },
     {
       underscored: true,
+      timestamps: false,
     }
   )
+
   const Area = db.define(
     'area',
     {
@@ -38,61 +39,102 @@ function defineDatabaseStructure() {
         type: DataTypes.STRING,
         primaryKey: true,
       },
+      icon: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       overview: DataTypes.TEXT,
       paragraph1: DataTypes.TEXT,
       image1: {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      imageCap1: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       paragraph2: DataTypes.TEXT,
       image2: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      imageCap2: {
         type: DataTypes.STRING,
         allowNull: true,
       },
     },
     {
       underscored: true,
+      timestamps: false,
     }
   )
+
   const Service = db.define(
     'service',
     {
       name: DataTypes.STRING,
+      slogan: DataTypes.STRING,
+      icon: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       paragraph1: DataTypes.TEXT,
       image1: {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      imageCap1: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       paragraph2: DataTypes.TEXT,
       image2: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      imageCap2: {
         type: DataTypes.STRING,
         allowNull: true,
       },
     },
     {
       underscored: true,
+      timestamps: false,
     }
   )
+
   const Event = db.define(
     'event',
     {
       title: DataTypes.STRING,
+      icon: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       date: DataTypes.DATEONLY,
       time: DataTypes.TIME,
       location: DataTypes.TEXT,
-      latitude: DataTypes.STRING,
-      longitude: DataTypes.STRING,
+      map: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       overview: DataTypes.TEXT,
       paragraph: DataTypes.TEXT,
       image: {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      imageCap: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       underscored: true,
+      timestamps: false,
     }
   )
+
   const Message = db.define(
     'message',
     {
@@ -104,35 +146,74 @@ function defineDatabaseStructure() {
     },
     {
       underscored: true,
+      timestamps: false,
     }
   )
 
-  // Creating the N -> N association between Event and Person
-  Event.belongsToMany(Person, { through: 'eventHost' }) //to show hosts in event page
-  //Person.belongsToMany(Event, { through: 'eventHost' }) //not needed
+  // Creating the N -> N association between EVENT and PERSON
+  Event.belongsToMany(Person, { through: 'eventHost', timestamps: false }) // to show hosts in event page
+  // Person.belongsToMany(Event, { through: 'eventHost' })
 
-  // Creating the N -> N association between Service and Person: ASSISTANCE
-  Service.belongsToMany(Person, { through: 'assistance' }) //to show team in service team page
-  Person.belongsToMany(Service, { through: 'assistance' }) //to show tasks in person page
+  // Creating the 1 -> N association between EVENT and AREA
+  Area.hasMany(Event) // to show events in area page
+  Event.belongsTo(Area) // to show to which area an event belongs
 
-  // Creating the 1 -> N association between Event and Area
-  Area.hasMany(Event) //to show events in area page
-  Event.belongsTo(Area) //to show to which area an event belongs
+  // Creating the N -> N association between SERVICE and PERSON: ASSISTANCE
+  Service.belongsToMany(Person, {
+    as: 'assistants',
+    through: 'assistance',
+    timestamps: false,
+  }) // to show team in service team page
+  Person.belongsToMany(Service, {
+    as: 'tasksAsAssistant',
+    through: 'assistance',
+    timestamps: false,
+  }) // to show tasks in person page
 
-  // Creating the 1 -> N association between Person and Service: PROJECT MANAGER
-  Person.hasMany(Service, { foreignKey: 'project_manager' }) //to show "Responsibilities" in person page
-  Service.belongsTo(Person, { foreignKey: 'project_manager' }) //to show "Service PM in Service Team page" NOTE: MAYBE CAN BE EASIER VIA QUERYING
+  // Creating the 1 -> N association between PERSON and SERVICE: PROJECT MANAGER
+  Person.hasMany(Service, {
+    as: 'tasksAsPM',
+    foreignKey: 'project_manager',
+  }) // to show "Responsibilities" in person page
+  Service.belongsTo(Person, { as: 'pm', foreignKey: 'project_manager' }) // to show "Service PM in Service Team page"
 
-  // Creating the 1 -> N association between Service and Area: SERVICES RELATED TO AREA
-  Area.hasMany(Service) //to show services in area
-  Service.belongsTo(Area) //NEEDED TO SHOW JUST AREA NAME!
+  // Creating the 1 -> N association between SERVICE and AREA: SERVICES RELATED TO AREA
+  Area.hasMany(Service) // to show services in area
+  Service.belongsTo(Area) // needed to show area name
 
-  // Creating the 1 -> 1 association between Person and Area: RESPONSIBLE. NEEDED FROM BOTH SIDES
-  Person.hasOne(Area, { foreignKey: 'responsible' }) //to show "Responsibilities" in person page
-  Area.belongsTo(Person, { foreignKey: 'responsible' }) //to show "Area responsible in Area Team page" NOTE: MAYBE CAN BE EASIER VIA QUERYING
-  // Creating the N -> N association between Area and Person. EMPLOYEE (WORKS IN AREA)
-  Area.belongsToMany(Person, { through: 'employee' }) //to show team (employees) in area team page
-  Person.belongsToMany(Area, { through: 'employee' }) //to show tasks in person page
+  // Creating the 1 -> 1 association between PERSON and AREA: RESPONSIBLE.
+  Person.hasOne(Area, { as: 'responsibility', foreignKey: 'responsible' }) // to show "Responsibilities" in person page
+  Area.belongsTo(Person, { as: 'area_responsible', foreignKey: 'responsible' }) // to show "Area responsible in Area Team page"
+
+  // REMOVED RELATIONSHIP
+  // Creating the N -> N association between AREA and PERSON: AREA WORKERS
+  // Area.belongsToMany(Person, {
+  //   as: 'workers',
+  //   through: 'employee',
+  //   timestamps: false,
+  // }) // to show team (employees) in area team page
+  // Person.belongsToMany(Area, { through: 'employee', timestamps: false }) // to show tasks in person page
+
+  // CORRESPONDING API REMOVED
+  // const person = await Area.findByPk(id, {
+  //   attributes: [],
+  //   include: [
+  //     {
+  //       model: Person, // include area responsible
+  //       as: 'area_responsible',
+  //       attributes: ['id', 'name', 'surname', 'image', 'position'],
+  //     },
+  //     {
+  //       model: Person, // include area workers
+  //       as: 'workers',
+  //       attributes: ['id', 'name', 'surname', 'image', 'position'],
+  //     },
+  //   ],
+  //   order: [
+  //     [{ model: Person, as: 'area_responsible' }, 'surname', 'ASC'],
+  //     [{ model: Person, as: 'workers' }, 'surname', 'ASC'],
+  //   ],
+  // })
 
   db._tables = {
     Event,
