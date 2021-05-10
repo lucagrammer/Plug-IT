@@ -6,7 +6,15 @@
     <section class="section-container">
       <!-- GRID WITH NEXT 4 EVENTS-->
       <h2>Upcoming Events</h2>
-      <grid :elements="undefined" />
+
+      <grid v-if="eventsCounter > 0" :elements="fetchedEvents" />
+
+      <!-- No results message -->
+      <p v-else class="error">
+        <span class="mdi mdi-alert-circle"></span>
+        No upcoming events
+      </p>
+
       <base-button
         label="Find out more"
         icon="mdi mdi-calendar"
@@ -29,16 +37,22 @@ export default {
   mixins: [RoutingMixins],
   async asyncData({ $axios }) {
     // fetch the next 4 events from the database
-    const { data } = await $axios.get(`${process.env.BASE_URL}/api/events`) // TODO: CHANGE API URL WITH THE ONE THAT RETURNS ONLY 4 EVENTS
+    const { data } = await $axios.get(
+      `${process.env.BASE_URL}/api/upcomingEvents`
+    )
+    // parameters required by the breadcrumb component of the destination page
+    const fromEventToArea = '?route=2'
+
+    // convert the fetched data into the format required by the components
     const fetchedEvents = []
     // convert the fetched data into the format required by the components
     data.forEach(function (event) {
       fetchedEvents.push({
-        image: event.image,
+        image: event.icon,
         heading: event.title,
         destinationLink: '/events/' + event.id,
         subheading: event.areaName,
-        subheadingLink: '/areas/' + event.areaName,
+        subheadingLink: '/areas/' + event.areaName + fromEventToArea,
         label: event.date + ', ' + event.time.substring(0, 5),
         labelIcon: 'mdi mdi-calendar',
         summary: event.overview,
@@ -46,6 +60,7 @@ export default {
     })
     return {
       fetchedEvents,
+      eventsCounter: fetchedEvents.length,
     }
   },
   data() {
@@ -106,5 +121,10 @@ export default {
 /* Positioning of the find-out-more button */
 .right-button {
   float: right;
+}
+
+.error {
+  text-align: center;
+  margin-top: 20vh;
 }
 </style>

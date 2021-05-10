@@ -50,7 +50,7 @@
     <!-- CONTACT FORM -->
     <section class="section-container">
       <contact-form
-        heading="If you are interested in this service, please contact us"
+        heading="If you are interested to this service, please contact us"
         :page-name="'SERVICE_ID: ' + serviceID"
       />
     </section>

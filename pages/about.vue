@@ -40,7 +40,7 @@
             complex programs known as assemblers, compilers and operating
             systems. <br />
             During the next five decades, CSC grew rapidly to serve governments
-            and enterprises worldwide.
+            and enterprises worldwide. CSC became Plug-IT in 1995.
           </li>
           <li>
             <i>Today</i>, <b>Plug-IT</b> helps global companies run their
@@ -83,11 +83,13 @@
           the scope and scale of services in the Enterprise Technology Stack.
         </p>
       </paragraph>
-      <base-button
-        label="Contact us"
-        icon="mdi mdi-email"
-        @click.native="navigateTo('/contacts')"
-      />
+      <div class="button-container">
+        <base-button
+          label="Contact us"
+          icon="mdi mdi-email"
+          @click.native="navigateTo('/contacts')"
+        />
+      </div>
     </section>
   </main>
 </template>
@@ -116,4 +118,14 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.button-container {
+  position: relative;
+  width: 100%;
+}
+button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+</style>

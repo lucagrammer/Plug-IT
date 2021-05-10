@@ -137,7 +137,7 @@
     <hr />
     <section class="section-container">
       <contact-form
-        heading="If you are interested in this event, please contact us"
+        heading="If you are interested to this event, please contact us"
         page-name="pippo"
       />
     </section>
