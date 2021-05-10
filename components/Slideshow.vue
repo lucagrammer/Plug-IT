@@ -1,6 +1,6 @@
 <!--
   Component: Slideshow
-  Description: Slideshow of images with a Paragraph inside
+  Description: Slideshow of images with a Paragraph component inside
   Props:
   ├── slides: array of objects, each containing image, alt, title, description, labelType (optional, either 'popular' or 'new') and link
   └── time-per-slides: time in milliseconds for each slide. Default value: 5sec
@@ -74,26 +74,26 @@ import Paragraph from './Paragraph.vue'
 export default {
   components: { Paragraph },
   props: {
-    // slides: array of objects containing image, alt, title, description and link for each slide
+    /** slides: array of objects containing image, alt, title, description and link for each slide */
     slides: { type: Array, default: () => [], required: true },
 
-    // time-per-slides: time in milliseconds for each slide. Default value: 5sec
+    /** time-per-slides: time in milliseconds for each slide. Default value: 5sec */
     timePerSlide: { type: Number, default: () => 5000 },
   },
   data() {
     return {
-      // Slide index currently shown
+      /**  Slide index currently shown */
       currentIndex: 0,
 
-      // Number of slides
+      /** Number of slides */
       maxIndex: this.slides.length - 1,
 
-      // Timer for slider
+      /** Timer for slider */
       timer: null,
     }
   },
   computed: {
-    // Return the class for the dot based on the index of the slide
+    /** Return the class for the dot based on the index of the slide */
     dotClassStatus() {
       return (slideIndex) =>
         slideIndex === this.currentIndex
@@ -105,33 +105,33 @@ export default {
     this.timer = setInterval(() => this.updateIndex(), this.timePerSlide)
   },
   methods: {
-    // Index setter for dots-commands
+    /**  Index setter for dots-commands */
     setIndex(value) {
       this.currentIndex = value
       this.resetTimer()
     },
 
-    // Index setter fot next-command
+    /** Index setter fot next-command */
     next() {
       this.currentIndex =
         this.currentIndex >= this.maxIndex ? 0 : this.currentIndex + 1
       this.resetTimer()
     },
 
-    // Index setter for prev-command
+    /** Index setter for prev-command */
     prev() {
       this.currentIndex =
         this.currentIndex <= 0 ? this.maxIndex : this.currentIndex - 1
       this.resetTimer()
     },
 
-    // Reset the timer
+    /** Reset the timer */
     resetTimer() {
       clearInterval(this.timer)
       this.timer = setInterval(() => this.updateIndex(), this.timePerSlide)
     },
 
-    // Go to the next slide
+    /** Go to the next slide */
     updateIndex() {
       this.currentIndex =
         this.currentIndex >= this.maxIndex ? 0 : this.currentIndex + 1

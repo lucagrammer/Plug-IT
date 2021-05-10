@@ -41,6 +41,7 @@
         <base-button
           icon="mdi mdi-linkedin"
           label="Find me on Linkedin"
+          :hover-flag="false"
           @click.native="
             navigateToExternal('https://www.linkedin.com/' + linkedin)
           "

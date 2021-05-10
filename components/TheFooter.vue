@@ -36,7 +36,7 @@
 export default {
   data() {
     return {
-      // Social names and usernames
+      /** Social names and usernames */
       socialList: [
         {
           name: 'Facebook',

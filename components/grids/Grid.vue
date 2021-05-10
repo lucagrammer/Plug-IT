@@ -1,6 +1,8 @@
 <!--
   Component: Grid
-  Description: A responsive grid of made up of Card elements
+  Description:  A responsive grid of made up of Card elements. It shows up to two 
+                card elements per row and, optionally, one featured element in the first row. 
+                It recives as props the information required by the Card component.
   Props:
   ├── featured-element: featured card component props (optional)
   └── elements: array of card component props
@@ -55,10 +57,10 @@ import Card from './Card.vue'
 export default {
   components: { Card },
   props: {
-    // featured-element: featured card component props (optional)
+    /** featured-element: featured card component props (optional) */
     featuredElement: { type: Object, default: () => null },
 
-    // elements: array of card component props
+    /** elements: array of card component props */
     elements: { type: Array, default: () => [], required: true },
   },
 }

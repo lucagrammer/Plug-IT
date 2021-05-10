@@ -27,23 +27,23 @@
 <script>
 export default {
   props: {
-    // tabs: array of tabs name. Element slide[0] is selected by default
+    /** tabs: array of tabs name. Element slide[0] is selected by default */
     tabs: { type: Array, default: () => [], required: true },
   },
   data() {
     return {
-      // Tab number currently shown
+      /** Tab number currently shown */
       selected: 0,
     }
   },
   computed: {
-    // Return the class for the heading based on the tab number
+    /** Return the class for the heading based on the tab number */
     headingClass(tabNumber) {
       return (tabNumber) => (tabNumber === this.selected ? 'selected-tab' : '')
     },
   },
   methods: {
-    // Emit the tab-change event
+    /** Emit the tab-change event */
     onChange(tabIndex) {
       this.selected = tabIndex
       this.$emit('tab-change', tabIndex)

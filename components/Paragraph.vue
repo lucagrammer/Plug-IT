@@ -1,6 +1,8 @@
 <!--
   Component: Paragraph
-  Description: A general purpose paragraph with an (optional) image
+  Description:  A general purpose paragraph with an (optional) image. 
+                The content of the paragraph is specified as a slot (enabling the use of html tags).
+                If an image is specified is possible to specify it position (either left or right)
   Named slots: 
   └── default slot: paragraph's text
   Props:
@@ -52,23 +54,23 @@ export default {
   },
   data() {
     return {
-      // Visibility flag of the left image
+      /** Visibility flag of the left image */
       leftImageVisibility: this.hasImage() && this.isRightPositioned(),
 
-      // Visibility flag of the right image
+      /** Visibility flag of the right image */
       rightImageVisibility: this.hasImage() && !this.isRightPositioned(),
 
-      // Class of the main container of the paragraph to show the image always before the text in mobile version.
+      /** Class of the main container of the paragraph to show the image always before the text in mobile version. */
       mobileContainerClass: this.isRightPositioned()
         ? ''
         : 'image-before-paragraph',
 
-      // Class for the paragraph's text to manage its size according to its type
+      /** Class for the paragraph's text to manage its size according to its type */
       paragraphTextClass: this.hasImage()
         ? 'paragraph-text'
         : 'paragraph-text-only',
 
-      // Class for the wrapper of the paragraph's text to define left/right margin
+      /** Class for the wrapper of the paragraph's text to define left/right margin */
       textWrapperClass: !this.hasImage()
         ? ''
         : this.isRightPositioned()
@@ -77,12 +79,12 @@ export default {
     }
   },
   methods: {
-    // Return true iff the paragraph's text is right positioned
+    /** Return true iff the paragraph's text is right positioned */
     isRightPositioned() {
       return this.position === 'right'
     },
 
-    // Return true iff the paragraph is not a text-only one
+    /** Return true iff the paragraph is not a text-only one */
     hasImage() {
       return this.image !== ''
     },

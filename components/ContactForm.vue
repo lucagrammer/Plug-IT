@@ -1,6 +1,7 @@
 <!--
   Component: Contact Form
-  Description: A contact form to contact the company
+  Description:  A contact form to contact the company. It manages internally 
+                the storing of the messages inside the database
   Props:
   ├── heading: the heading of the form
   └── page-name: the page from which the form has been sent
@@ -156,15 +157,15 @@ import BaseButton from './BaseButton.vue'
 export default {
   components: { BaseButton },
   props: {
-    // page-name: the page from which the form has been sent
+    /** page-name: the page from which the form has been sent */
     pageName: { type: String, default: () => '', required: true },
 
-    // headign: the heading of the form
+    /** headign: the heading of the form */
     heading: { type: String, default: () => '', required: true },
   },
   data() {
     return {
-      // Current interface displayed for the form
+      /** Current interface displayed for the form */
       currentInterface: 0,
 
       // Form fields
@@ -177,7 +178,7 @@ export default {
     }
   },
   methods: {
-    // Send the message to the server updating the interface according to the outcome
+    /** Send the message to the server updating the interface according to the outcome */
     sendMessage(e) {
       e.preventDefault()
       this.currentInterface = 1 // Display the loading interface
@@ -198,12 +199,12 @@ export default {
         })
     },
 
-    // Display again the form to be filled in
+    /** Display again the form to be filled in  */
     retry() {
       this.currentInterface = 0
     },
 
-    // Clear the form and display it to the user
+    /**  Clear the form and display it to the user */
     clearForm() {
       this.name = null
       this.surname = null

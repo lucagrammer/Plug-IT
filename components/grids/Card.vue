@@ -1,6 +1,8 @@
 <!--
   Component: Card
-  Description: A card with an image and a structured description
+  Description:  A card with an image and a structured description. This component
+                can be used inside a Grid component but also standalone.
+                It recives all the information needed as props.
   Props:
   ├── image: card image path
   ├── heading: main heading of the card
@@ -54,28 +56,28 @@ import RoutingMixins from '~/mixins/Routing.js'
 export default {
   mixins: [RoutingMixins],
   props: {
-    // image: card image path
+    /** image: card image path */
     image: { type: String, default: () => '', required: true },
 
-    // heading: main heading of the card
+    /** heading: main heading of the card */
     heading: { type: String, default: () => '', required: true },
 
-    // destination-link: destination link of the heading and image
+    /** destination-link: destination link of the heading and image */
     destinationLink: { type: String, default: () => '', required: true },
 
-    // subheading: subheading of the card (optional)
+    /** subheading: subheading of the card (optional) */
     subheading: { type: String, default: () => '' },
 
-    // subheading-link: link of the subheading (optional)
+    /** subheading-link: link of the subheading (optional) */
     subheadingLink: { type: String, default: () => '' },
 
-    // label: additional label of the card (optional)
+    /** label: additional label of the card (optional) */
     label: { type: String, default: () => '' },
 
-    // label-icon: icon to be shown before the label (optional)
+    /** label-icon: icon to be shown before the label (optional) */
     labelIcon: { type: String, default: () => '' },
 
-    // summary: short paragraph to be shown inside the card (optional)
+    /** summary: short paragraph to be shown inside the card (optional) */
     summary: { type: String, default: () => '' },
   },
 }

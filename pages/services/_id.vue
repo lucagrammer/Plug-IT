@@ -18,8 +18,11 @@
       />
 
       <!-- RELATED AREA -->
-      <nuxt-link class="area-label" :to="'/areas/' + area + fromServiceToArea">
-        {{ area }}
+      <nuxt-link
+        class="area-label"
+        :to="'/areas/' + areaName + fromServiceToArea"
+      >
+        {{ areaName }}
       </nuxt-link>
 
       <!-- SERVICE SLOGAN -->
@@ -84,13 +87,24 @@ export default {
     return {
       serviceID,
       serviceName: data.name,
-      area: data.areaName,
+      areaName: data.areaName,
       slogan: data.slogan,
       image1: data.image1,
+      imageCap1: data.imageCap1,
       paragraph1: data.paragraph1,
       image2: data.image2,
+      imageCap2: data.imageCap2,
       paragraph2: data.paragraph2,
       fromServiceToArea,
+    }
+  },
+  data() {
+    return {
+      // Additional query values required by the dynamic breadcrumb
+      personName: this.$route.query.person,
+      personID: this.$route.query.pID,
+      eventName: this.$route.query.event,
+      eventID: this.$route.query.eID,
     }
   },
 }

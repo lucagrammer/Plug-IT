@@ -1,6 +1,7 @@
 <!--
   Component: MapView
-  Description: A Google map view component. Based on the Google My Maps.
+  Description:  A Google map view with a description. Based on the Google My Maps.
+                It requires the identifier of the map and a slot to be shown as description.
   Named slots: 
   └── default slot: what to display next to the map view
   Props:
@@ -30,7 +31,7 @@
 <script>
 export default {
   props: {
-    // map-id: the Google My Map identifier. By default is set to the Plug-IT HQ map
+    /** map-id: the Google My Map identifier. By default is set to the Plug-IT HQ map */
     mapId: { type: String, default: () => '1xRytj_13i84wCH0axdS4uMCM_YuJKiJ4' },
   },
 }

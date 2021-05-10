@@ -1,6 +1,7 @@
 <!--
   Component: Button
-  Description: A general purpose button with an optional icon
+  Description:  A general purpose button with an optional icon.
+                On muose hover the icon is substituted with the otlined version (if not disabled via props)
   Props:
   ├── label: the button label
   ├── type: the type of the button. Button by default. 
@@ -18,31 +19,31 @@
 <script>
 export default {
   props: {
-    // label: the button label
+    /** label: the button label */
     label: { type: String, default: () => '', required: true },
 
-    // type: the type of the button. Button by default.
+    /** type: the type of the button. Button by default. */
     type: { type: String, default: () => 'button' },
 
-    // icon: the icon to be shown (optional)
+    /** icon: the icon to be shown (optional) */
     icon: { type: String, default: () => '' },
 
-    // hover-flag: substitute the icon with the outline version on mouse hover. True by default.
+    /** hover-flag: substitute the icon with the outline version on mouse hover. True by default. */
     hoverFlag: { type: Boolean, default: () => true },
   },
   data() {
     return {
-      // Icon class curretly shown
+      /** Icon class curretly shown */
       iconClass: this.icon,
     }
   },
   methods: {
-    // Substitute the standard icon with the outlined one
+    /** Substitute the standard icon with the outlined one */
     outlineIcon() {
       this.iconClass = this.hoverFlag ? this.icon + '-outline' : this.icon
     },
 
-    // Substitute the outlined icon with the standard one
+    /** Substitute the outlined icon with the standard one */
     solidIcon() {
       this.iconClass = this.icon
     },

@@ -63,7 +63,7 @@
 export default {
   data() {
     return {
-      // Names and paths of the navbar elements
+      /** Names and paths of the navbar elements */
       menuOptions: [
         {
           name: 'About',
@@ -97,12 +97,12 @@ export default {
         },
       ],
 
-      // Expansion status of the mobile navbar menu
+      /** Expansion status of the mobile navbar menu */
       mobileMenuVisibility: false,
     }
   },
   methods: {
-    // Reduce/expand the dropdown menu of the mobile navbar
+    /** Reduce/expand the dropdown menu of the mobile navbar */
     changeMobileMenuVisibility() {
       this.mobileMenuVisibility = !this.mobileMenuVisibility
     },

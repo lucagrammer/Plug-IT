@@ -1,7 +1,11 @@
 <!--
   Component: Breadcrumb
   Description:  A dynamic breadcrumb. The route to be shown is defined by the parameter 
-                'route' in the URL.
+                'route' in the URL. Specifically: 
+                - if its value is not specified (or is equal to -1) the default-route is displayed;
+                - otherwise (>=0) its value represent the index of the alt-route array to be displayed.
+                A single route (made up of the traversed pages) is specified as an array of objects (specifying path and title of the traversed pages)
+                
   Props:
   ├── default-route: the default breadcrumb defined as an array of pairs (path,title). It's shown when no other alternative route is activated 
   ├── alt-routes: array of alternative breadcrumbs . The alternative to be shown at position 'route'.
@@ -26,26 +30,26 @@
 <script>
 export default {
   props: {
-    // default-route: the default breadcrumb defined as an array of pairs (path,title). It's shown when no other alternative route is activated
+    /** default-route: the default breadcrumb defined as an array of pairs (path,title). It's shown when no other alternative route is activated */
     defaultRoute: { type: Array, default: () => [] },
 
-    // alt-routes: array of alternative breadcrumbs . The alternative to be shown at position 'route'.
+    /** alt-routes: array of alternative breadcrumbs . The alternative to be shown at position 'route'. */
     altRoutes: { type: Array, default: () => [] },
 
-    // current-page: name of the current page to be shown in the breadcrumb
+    /** current-page: name of the current page to be shown in the breadcrumb */
     currentPage: { type: String, default: () => '' },
   },
   data() {
     return {
-      // Visibility flag for the breadcrumb
+      /** Visibility flag for the breadcrumb */
       showRoute: this.defaultRoute.length > 0,
 
-      // Route selected to be shown in the breadcrumb
+      /** Route selected to be shown in the breadcrumb */
       selectedRoute: this.defaultRoute,
     }
   },
   created() {
-    // Fetch the selected route from the query parameters
+    /** Fetch the selected route from the query parameters */
     const index = this.$route.query.route
     if (index > -1) {
       this.selectedRoute = this.altRoutes[index]

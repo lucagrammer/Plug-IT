@@ -20,7 +20,7 @@
 <script>
 export default {
   methods: {
-    // Emit the filter-change event
+    /** Emit the filter-change event */
     onChange(event) {
       this.$emit('filter-change', event.target.value)
     },

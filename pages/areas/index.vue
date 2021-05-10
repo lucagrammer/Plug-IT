@@ -18,7 +18,6 @@ export default {
   async asyncData({ $axios, redirect }) {
     // fetch the areas from the database
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/areas`)
-    console.log(JSON.stringify(data))
     if (data === null || data.length === 0) {
       return redirect(
         '/error?err=Failed to retrieve areas data. Try again later.'
