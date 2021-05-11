@@ -6,11 +6,11 @@
         :alt-routes="[
           [{ title: areaName, path: '/areas/' + areaName }],
           [
-            { title: 'People', path: '/people' },
+            /*{ title: 'People', path: '/people' },*/
             { title: personName, path: '/people/' + personID },
           ],
           [
-            { title: ' events', path: '/events' },
+            /*{ title: ' events', path: '/events' },*/
             { title: eventName, path: '/events/' + eventID },
           ],
         ]"
@@ -50,7 +50,7 @@
     <!-- CONTACT FORM -->
     <section class="section-container">
       <contact-form
-        heading="If you are interested to this service, please contact us"
+        heading="If you are interested in this service, please contact us"
         :page-name="'SERVICE_ID: ' + serviceID"
       />
     </section>

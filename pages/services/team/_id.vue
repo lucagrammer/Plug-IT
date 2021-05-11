@@ -37,7 +37,7 @@ export default {
 
     // parameters required by the breadcrumb component of the destination page
     const fromTeamToPeople =
-      '?route=1&sID=' + serviceID + '&service=' + data.name
+      '?route=1&sID=' + serviceID + '&service=' + data.name.replace('+', '%2b')
 
     // convert the fetched data into the format required by the components
     const projectManager = {

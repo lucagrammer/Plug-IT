@@ -56,7 +56,7 @@ export default {
         heading: person.name + ' ' + person.surname,
         image: person.image,
         destinationLink: '/people/' + person.id,
-        subheading: person.position,
+        label: person.position,
       })
     })
     return {
