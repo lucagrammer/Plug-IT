@@ -10,10 +10,12 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
 export default {
   components: {
     Grid,
+    Breadcrumb,
   },
   async asyncData({ $axios, redirect }) {
     // fetch the areas from the database
@@ -36,6 +38,19 @@ export default {
     })
     return {
       areas,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | Areas',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A brief overview of the areas in which Plug-IT operates: Internet of Things, Security, Business Management, Education and Artificial Intelligence. ',
+        },
+      ],
     }
   },
 }

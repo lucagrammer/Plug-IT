@@ -97,7 +97,7 @@
           </div>
 
           <!-- Form controls -->
-          <div class="controls">
+          <div class="centered-button">
             <base-button type="send" label="Send message" icon="mdi mdi-send" />
           </div>
         </div>
@@ -122,7 +122,7 @@
           Your message has been sent correctly<br />
           You will receive a reply in the next few days
         </p>
-        <div class="controls">
+        <div class="centered-button">
           <base-button
             label="Send a new message"
             icon="mdi mdi-email-plus"
@@ -140,7 +140,7 @@
           An error occured<br />
           Please try again later
         </p>
-        <div class="controls">
+        <div class="centered-button">
           <base-button
             label="Try again"
             icon="mdi mdi-email-plus"
@@ -264,11 +264,6 @@ export default {
 /* Layout of the labels of the checkboxes */
 .checkbox-fieldset {
   margin-top: 15px;
-}
-
-/* Layout of the labels of the form controls */
-.controls {
-  text-align: center;
 }
 
 /* Appearence of the input elements */

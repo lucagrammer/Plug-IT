@@ -75,6 +75,11 @@ li {
   margin-top: 30vh;
 }
 
+/* Styling for centered buttons */
+.centered-button {
+  text-align: center;
+}
+
 /* Flow up animation for page opening */
 @keyframes flowUp {
   from {

@@ -25,15 +25,17 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
+import ContactForm from '~/components/ContactForm.vue'
+import MapView from '~/components/MapView.vue'
 export default {
-  components: {},
+  components: { MapView, ContactForm, Breadcrumb },
+  head() {
+    return {
+      title: 'Plug-IT | Contacts',
+    }
+  },
 }
 </script>
 
-<style scoped>
-.section-container {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%);
-}
-</style>
+<style scoped></style>

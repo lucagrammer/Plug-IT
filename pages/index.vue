@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import BaseButton from '~/components/BaseButton.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Slideshow from '~/components/Slideshow.vue'
 import RoutingMixins from '~/mixins/Routing.js'
@@ -33,6 +34,7 @@ export default {
   components: {
     Grid,
     Slideshow,
+    BaseButton,
   },
   mixins: [RoutingMixins],
   async asyncData({ $axios }) {

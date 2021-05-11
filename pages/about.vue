@@ -83,7 +83,7 @@
           the scope and scale of services in the Enterprise Technology Stack.
         </p>
       </paragraph>
-      <div class="button-container">
+      <div class="centered-button">
         <base-button
           label="Contact us"
           icon="mdi mdi-email"
@@ -95,11 +95,15 @@
 </template>
 
 <script>
+import BaseButton from '~/components/BaseButton.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Paragraph from '~/components/Paragraph.vue'
 import RoutingMixins from '~/mixins/Routing.js'
 export default {
   components: {
     Paragraph,
+    Breadcrumb,
+    BaseButton,
   },
   mixins: [RoutingMixins],
   head() {
@@ -118,14 +122,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.button-container {
-  position: relative;
-  width: 100%;
-}
-button {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%);
-}
-</style>
+<style scoped></style>

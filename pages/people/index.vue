@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
 
@@ -37,6 +38,7 @@ export default {
   components: {
     Paragraph,
     Grid,
+    Breadcrumb,
   },
   async asyncData({ $axios, redirect }) {
     // fetch the people from the database
@@ -59,6 +61,19 @@ export default {
     })
     return {
       people,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | People',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Plug-IT is made up of talented individuals who share a passion for achieving the best in everything they do. Our team puts our clients first, with a relentless focus on championing bold ideas that help them achieve the extraordinary.',
+        },
+      ],
     }
   },
 }

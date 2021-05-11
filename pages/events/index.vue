@@ -26,12 +26,16 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
+import SelectFilter from '~/components/SelectFilter.vue'
 import TabView from '~/components/TabView.vue'
 export default {
   components: {
     Grid,
     TabView,
+    Breadcrumb,
+    SelectFilter,
   },
   async asyncData({ $axios, redirect }) {
     // fetch the events from the database
@@ -75,6 +79,19 @@ export default {
 
       // Current date
       today: new Date(),
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | Events',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'All the events organized by Plug-IT for the various areas in which we operate: Internet of Things, Security, Business Management, Education and Artificial Intelligence. ',
+        },
+      ],
     }
   },
   computed: {

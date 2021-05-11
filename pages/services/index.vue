@@ -22,10 +22,14 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
+import SelectFilter from '~/components/SelectFilter.vue'
 export default {
   components: {
     Grid,
+    Breadcrumb,
+    SelectFilter,
   },
   async asyncData({ $axios, redirect }) {
     // fetch the services from the database
@@ -60,6 +64,19 @@ export default {
     return {
       // Default option for area
       selectedArea: 'All',
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | Our Services',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Discover our services for the Internet of Things, Security, Business Management, Education and Artificial Intelligence areas. ',
+        },
+      ],
     }
   },
   computed: {

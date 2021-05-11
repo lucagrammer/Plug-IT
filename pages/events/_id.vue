@@ -58,13 +58,19 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
+import ContactForm from '~/components/ContactForm.vue'
 import Grid from '~/components/grids/Grid.vue'
+import MapView from '~/components/MapView.vue'
 import Paragraph from '~/components/Paragraph.vue'
 import RoutingMixins from '~/mixins/Routing.js'
 export default {
   components: {
     Paragraph,
     Grid,
+    ContactForm,
+    MapView,
+    Breadcrumb,
   },
   mixins: [RoutingMixins],
   async asyncData({ $axios, route, redirect }) {
@@ -108,6 +114,18 @@ export default {
       location: data.location,
       fromEventToArea,
       hosts,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | ' + this.eventName,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.overview,
+        },
+      ],
     }
   },
 }

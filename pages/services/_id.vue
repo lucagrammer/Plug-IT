@@ -59,12 +59,16 @@
 
 <script>
 import BaseButton from '~/components/BaseButton.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
+import ContactForm from '~/components/ContactForm.vue'
 import Paragraph from '~/components/Paragraph.vue'
 import RoutingMixins from '~/mixins/Routing.js'
 export default {
   components: {
     BaseButton,
     Paragraph,
+    ContactForm,
+    Breadcrumb,
   },
   mixins: [RoutingMixins],
   async asyncData({ $axios, route, redirect }) {
@@ -105,6 +109,18 @@ export default {
       personID: this.$route.query.pID,
       eventName: this.$route.query.event,
       eventID: this.$route.query.eID,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | ' + this.serviceName,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.serviceName + ': ' + this.slogan,
+        },
+      ],
     }
   },
 }

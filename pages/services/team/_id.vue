@@ -44,7 +44,7 @@ export default {
       heading: data.pm.name + ' ' + data.pm.surname,
       image: data.pm.image,
       destinationLink: '/people/' + data.pm.id + fromTeamToPeople,
-      subheading: data.pm.position,
+      subheading: 'Project Manager',
     }
     const assistance = []
     data.assistants.forEach(function (assistant) {
@@ -60,6 +60,21 @@ export default {
       serviceName: data.name,
       projectManager,
       assistance,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | ' + this.serviceName + ' Team',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A brief overview of the people composing the team working on ' +
+            this.serviceName +
+            'service at Plug-IT.',
+        },
+      ],
     }
   },
 }

@@ -65,6 +65,21 @@ export default {
       areaName: this.$route.params.id,
     }
   },
+  head() {
+    return {
+      title: 'Plug-IT | ' + this.areaName + ' Team',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A brief overview of the people composing the team working on ' +
+            this.areaName +
+            ' at Plug-IT.',
+        },
+      ],
+    }
+  },
 }
 </script>
 

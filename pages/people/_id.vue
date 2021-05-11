@@ -67,6 +67,7 @@
 
 <script>
 import BaseButton from '~/components/BaseButton.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
 import RoutingMixins from '~/mixins/Routing.js'
@@ -75,6 +76,7 @@ export default {
     BaseButton,
     Paragraph,
     Grid,
+    Breadcrumb,
   },
   mixins: [RoutingMixins],
   async asyncData({ $axios, route, redirect }) {
@@ -146,6 +148,21 @@ export default {
       eventID: this.$route.query.eID,
       serviceName: this.$route.query.service,
       serviceID: this.$route.query.sID,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | ' + this.name,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Discover who is  ' +
+            this.name +
+            ', and what are his/her responsibilities and projects.',
+        },
+      ],
     }
   },
 }

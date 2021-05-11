@@ -20,13 +20,13 @@
           ],
           [{ title: 'Events', path: '/events' }],
           [
-            { title: 'Services', path: '/services' },
+            { title: 'Our Services', path: '/services' },
             {
               title: serviceName,
               path: '/services/' + serviceID,
             },
           ],
-          [{ title: 'Services', path: '/services' }],
+          [{ title: 'Our Services', path: '/services' }],
         ]"
         :current-page="areaName"
       />
@@ -65,6 +65,7 @@
 
 <script>
 import BaseButton from '~/components/BaseButton.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import Grid from '~/components/grids/Grid.vue'
 import Paragraph from '~/components/Paragraph.vue'
 import RoutingMixins from '~/mixins/Routing.js'
@@ -73,6 +74,7 @@ export default {
     BaseButton,
     Paragraph,
     Grid,
+    Breadcrumb,
   },
   mixins: [RoutingMixins],
   async asyncData({ $axios, route, redirect }) {
@@ -87,7 +89,7 @@ export default {
     }
 
     // parameters required by the breadcrumb component of the destination page
-    const fromAreaToService = '?route=3&area=' + areaName
+    const fromAreaToService = '?route=0&area=' + areaName
 
     // convert the fetched data into the format required by the components
     const services = []
@@ -122,6 +124,18 @@ export default {
       eventID: this.$route.query.eID,
       serviceName: this.$route.query.service,
       serviceID: this.$route.query.sID,
+    }
+  },
+  head() {
+    return {
+      title: 'Plug-IT | ' + this.areaName,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.overview,
+        },
+      ],
     }
   },
 }

@@ -113,26 +113,30 @@ async function init() {
 
     // fetch the area responsible
     const responsibileQuery =
-      'SELECT p.id, p.name, p.surname, p.image, p.position ' +
-      'FROM people AS p, areas AS a ' +
-      'WHERE a.responsible=p.id AND a.name=? '
+      'SELECT pe.id, pe.name, pe.surname, pe.image, pe.position ' +
+      'FROM people AS pe, areas AS ar ' +
+      'WHERE ar.responsible=pe.id AND ar.name= :area '
     data.area_responsible = await db.query(responsibileQuery, {
       nest: true,
       type: QueryTypes.SELECT,
-      replacements: [name],
+      replacements: { area: name },
     })
 
     // fetch people working in projects of the specified area
     const workersQuery =
-      'SELECT p.id, p.name, p.surname, p.image, p.position ' +
+      'SELECT DISTINCT p.id, p.name, p.surname, p.image, p.position ' +
       'FROM people as p ' +
       'WHERE p.id IN ( ' +
-      ' SELECT DISTINCT person_id FROM assistance as a, services as s1 ' +
+      ' SELECT person_id FROM assistance as a, services as s1 ' +
       ' WHERE s1.area_name=:area AND a.service_id=s1.id ' +
       '  UNION ' +
-      ' SELECT DISTINCT project_manager FROM services as s2 ' +
+      ' SELECT project_manager FROM services as s2 ' +
       ' WHERE s2.area_name=:area ' +
-      ') ORDER BY p.surname '
+      ') AND p.id NOT IN ( ' +
+      ' SELECT ar.responsible' +
+      ' FROM areas AS ar ' +
+      ' WHERE ar.name= :area ' +
+      ' ) ORDER BY p.surname '
     data.workers = await db.query(workersQuery, {
       replacements: { area: name },
       nest: true,
@@ -205,6 +209,7 @@ async function init() {
   app.get('/services', async (req, res) => {
     const services = await Service.findAll({
       attributes: ['id', 'icon', 'name', 'slogan', 'areaName'],
+      order: [['name', 'ASC']],
     })
     return res.json(services)
   })
