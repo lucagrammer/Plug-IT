@@ -19,7 +19,7 @@
       <!-- EVENT PARAGRAPH -->
       <paragraph :image="image" :image-cap="imageCap" position="right">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="paragraph">{{ paragraph }}</div>
+        <div v-html="paragraph"></div>
       </paragraph>
     </section>
     <hr />

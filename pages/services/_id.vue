@@ -31,13 +31,13 @@
       <!-- SERVICE PARAGRAPH 1 -->
       <paragraph :image="image1" :image-cap="imageCap1" position="right">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="paragraph1">{{ paragraph1 }}</div>
+        <div v-html="paragraph1"></div>
       </paragraph>
 
       <!-- SERVICE PARAGRAPH 2 -->
       <paragraph :image="image2" :image-cap="imageCap2" position="left">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="paragraph2">{{ paragraph2 }}</div>
+        <div v-html="paragraph2"></div>
       </paragraph>
       <base-button
         :label="'Discover our ' + serviceName + ' Team'"

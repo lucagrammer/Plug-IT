@@ -37,7 +37,7 @@
       <!-- EMPLOYEE BIO AND PHOTO -->
       <paragraph :image="image" :image-cap="name" position="right">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="bio">{{ bio }}</div>
+        <div v-html="bio"></div>
         <base-button
           icon="mdi mdi-linkedin"
           label="Find me on Linkedin"

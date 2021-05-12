@@ -132,8 +132,9 @@ export default {
   display: block;
 }
 img {
-  width: auto;
-  max-width: 100%;
+  /* width: auto;
+  max-width: 100%; */
+  width: 100%;
   margin: auto;
 }
 

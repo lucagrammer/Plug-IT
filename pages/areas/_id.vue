@@ -33,27 +33,22 @@
         :current-page="areaName"
       />
 
-      <!-- AREA OVERVIEW -->
-      <paragraph>
-        <p>{{ overview }}</p>
-      </paragraph>
-
       <!-- AREA PARAGRAPH 1 -->
       <paragraph :image="image1" :image-cap="imageCap1" position="right">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="paragraph1">{{ paragraph1 }}</div>
+        <div v-html="paragraph1"></div>
       </paragraph>
 
       <!-- AREA PARAGRAPH 2 -->
       <paragraph :image="image2" :image-cap="imageCap2" position="left">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-html="paragraph1">{{ paragraph2 }}</div>
+        <div v-html="paragraph2"></div>
+        <base-button
+          :label="'Discover our ' + areaName + ' Team'"
+          icon="mdi mdi-account-group"
+          @click.native="navigateTo('/areas/team/' + areaName)"
+        />
       </paragraph>
-      <base-button
-        :label="'Discover our ' + areaName + ' Team'"
-        icon="mdi mdi-account-group"
-        @click.native="navigateTo('/areas/team/' + areaName)"
-      />
     </section>
     <hr />
 

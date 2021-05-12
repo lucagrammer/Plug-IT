@@ -16,7 +16,7 @@
       </p>
 
       <base-button
-        label="Find out more"
+        label="Discover other events"
         icon="mdi mdi-calendar"
         class="right-button"
         @click.native="navigateTo('/events')"
@@ -70,9 +70,8 @@ export default {
       // Slideshow content
       slides: [
         {
-          image: '/services/iot/ihc/image1.png',
-          alt:
-            'A woman, standing in front of a table, uses a tablet to access smart office services.',
+          image: '/slideshow/1.png',
+          alt: 'A woman, standing in front of a table, uses a tablet to access smart office services.',
           title: 'Smart Offices at their best with IHC',
           description:
             'We help you connect your services together in remarkable new ways. IHC is the easiest way to do more with apps and devices like Twitter, Dropbox, iRobot, Fitbit, Alexa and much more.',
@@ -80,7 +79,7 @@ export default {
           link: '/services/25',
         },
         {
-          image: '/services/security/phishthreat/image1.png',
+          image: '/slideshow/2.png',
           alt: 'A stream of bits and a padlock',
           title: 'Phish Threat to manage digital risk',
           description:
@@ -89,9 +88,8 @@ export default {
           link: '/services/6',
         },
         {
-          image: '/services/business_management/powerbi/image1.png',
-          alt:
-            'A hand points to graphs shown on a computer monitor. Another employee looks at the monitor',
+          image: '/slideshow/3.png',
+          alt: 'A hand points to graphs shown on a computer monitor. Another employee looks at the monitor',
           title: 'Discover hidden data with PowerBI',
           description:
             'Unleash the potential of your business data and achieve success in your business. With PowerBI you can analyse turnover, sales network results, costs and forecasts in just a few clicks.',
@@ -99,9 +97,8 @@ export default {
           link: '/services/16',
         },
         {
-          image: '/services/ai/aipplus/image1.png',
-          alt:
-            'A robot performs complex calculations thanks to artificial intelligence',
+          image: '/slideshow/4.png',
+          alt: 'A robot performs complex calculations thanks to artificial intelligence',
           title: 'AIP+: AI for every business',
           description:
             'A collection of modular, pre-integrated AI services and capabilities, designed to make it significantly easier to adopt AI throughout your business.',

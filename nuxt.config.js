@@ -34,13 +34,11 @@ export default {
       { rel: 'apple-touch-icon', href: '/icon.png' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       {
-        href:
-          'https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap',
         rel: 'stylesheet',
       },
       {
-        href:
-          'https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css',
+        href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css',
         rel: 'stylesheet',
       },
     ],

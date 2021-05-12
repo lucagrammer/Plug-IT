@@ -3,7 +3,7 @@
     <section class="section-container">
       <breadcrumb current-page="People" />
       <paragraph
-        image="/people/people.jpeg"
+        image="/people/people.png"
         image-cap="A Plug-IT team at work around a desk"
         position="left"
       >

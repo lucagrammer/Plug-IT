@@ -5,7 +5,7 @@
 
       <!-- OUR HISTORY PARAGRAPH 1 -->
       <paragraph
-        image="/about/hq.jpg"
+        image="/about/hq.png"
         image-cap="Glass facade of the building of our headquarter located in Milan under blue sky during daytime."
         position="right"
       >
@@ -29,7 +29,7 @@
 
       <!-- OUR HISTORY PARAGRAPH 2 -->
       <paragraph
-        image="/about/offices.jpg"
+        image="/about/offices.png"
         image-cap="Man and woman sitting on table inside the offices of Plug-IT in Milan"
         position="left"
       >
@@ -60,7 +60,7 @@
 
       <!-- OUR VALUES PARAGRAPH -->
       <paragraph
-        image="/about/people.jpg"
+        image="/about/people.png"
         image-cap="Man standing in front of people sitting beside table with laptop computers during a meeting"
         position="right"
       >
