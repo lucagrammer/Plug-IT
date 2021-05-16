@@ -2,9 +2,9 @@ export default {
   ssr: true,
   target: 'server',
   env: {
-    // BASE_URL: 'https://test-polimi.herokuapp.com', // Production URL
-    BASE_URL: '', // Development URL
-    GOOGLE_MAPS_API_KEY: 'AIzaSyCWL7MydXuhufeaRI9RAVEUAKiTH8lu6TA', // Google Maps Secret Key
+    BASE_URL: 'https://plug-it.herokuapp.com', // Production URL
+    // BASE_URL: '', // Development URL
+    GOOGLE_MAPS_API_KEY: 'AIzaSyCWL7MydXuhufeaRI9RAVEUAKiTH8lu6TA', // Google Maps Key
   },
   serverMiddleware: [
     {

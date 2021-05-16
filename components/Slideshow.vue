@@ -53,6 +53,8 @@
             :key="'dot-' + dotIndex"
             ref="dot"
             :class="'dot mdi ' + dotClassStatus(dotIndex)"
+            tabindex="0"
+            :aria-label="'Go to slide ' + dotIndex"
             @click="setIndex(dotIndex)"
           ></span>
         </div>
@@ -60,11 +62,21 @@
     </transition>
 
     <!-- PREV/NEXT CONTROLS -->
-    <div class="slider-control next" @click="next()">
-      <span class="mdi mdi-chevron-right"></span>
-    </div>
-    <div class="slider-control prev" @click="prev()">
+    <div
+      class="slider-control prev"
+      tabindex="0"
+      aria-label="Go to previous slide"
+      @click="prev()"
+    >
       <span class="mdi mdi-chevron-left"></span>
+    </div>
+    <div
+      class="slider-control next"
+      tabindex="0"
+      aria-label="Go to next slide"
+      @click="next()"
+    >
+      <span class="mdi mdi-chevron-right"></span>
     </div>
   </div>
 </template>

@@ -29,11 +29,13 @@
         <span
           v-if="!mobileMenuVisibility"
           class="mdi mdi-menu"
+          title="Open menù"
           @click="changeMobileMenuVisibility"
         ></span>
         <span
           v-else
           class="mdi mdi-close"
+          title="Close menù"
           @click="changeMobileMenuVisibility"
         ></span>
       </nav>

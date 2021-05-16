@@ -84,7 +84,7 @@ li {
 @keyframes flowUp {
   from {
     opacity: 0;
-    transform: translate3d(0%, 100%, 0); /* traslazione x,y,z*/
+    transform: translate3d(0%, 25%, 0);
   }
   to {
     opacity: 1;
@@ -92,6 +92,6 @@ li {
   }
 }
 .page-enter-active {
-  animation: flowUp 0.2s;
+  animation: flowUp 0.18s;
 }
 </style>

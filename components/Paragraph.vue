@@ -132,9 +132,8 @@ export default {
   display: block;
 }
 img {
-  /* width: auto;
-  max-width: 100%; */
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   margin: auto;
 }
 
@@ -166,7 +165,7 @@ img {
   /* Revert the margin for the first element */
   .left-paragraph :first-child,
   .right-paragraph :first-child {
-    margin-top: revert;
+    margin-top: 20px;
   }
 
   /* Show images always before the text */
