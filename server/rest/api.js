@@ -227,13 +227,14 @@ async function init() {
   // _____________ MESSAGE __________________
   // ADD A MESSAGE: to add a message
   app.post('/message', async (req, res) => {
-    const { name, surname, email, subject, message } = req.body
+    const { name, surname, email, subject, message, commercialFlag } = req.body
     const messageObj = Message.build({
       name,
       surname,
       email,
       subject,
       message,
+      commercialFlag,
     })
     await messageObj.save()
     res.sendStatus(200)
