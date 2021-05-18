@@ -13,7 +13,7 @@
     <h2 class="form-heading">{{ heading }}</h2>
 
     <!-- SEND MESSAGE INTERFACE: form to be filled -->
-    <form v-if="currentInterface == 0" @submit="sendMessage">
+    <form v-if="currentInterface == 0" id="form" @submit="sendMessage">
       <input id="pageName" type="hidden" name="pageName" :value="pageName" />
 
       <!-- Textual fields of the form -->

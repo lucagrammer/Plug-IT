@@ -2,6 +2,7 @@
   <div>
     <the-header></the-header>
     <Nuxt />
+    <chat :chat-list="list" />
     <the-footer></the-footer>
   </div>
 </template>
@@ -9,11 +10,15 @@
 <script>
 import TheFooter from '~/components/TheFooter.vue'
 import TheHeader from '~/components/TheHeader.vue'
+import Chat from '~/components/Chat'
+import MMCCMixin from '~/mixins/mmcc-mixin'
 export default {
   components: {
     TheHeader,
     TheFooter,
+    Chat,
   },
+  mixins: [MMCCMixin],
 }
 </script>
 
