@@ -20,7 +20,9 @@
       </map-view>
     </section>
     <hr />
-    <contact-form heading="Get in touch" page-name="contacts" />
+    <section class="section-container">
+      <contact-form heading="Get in touch" page-name="contacts" />
+    </section>
   </main>
 </template>
 
