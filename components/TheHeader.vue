@@ -120,7 +120,7 @@ export default {
   background: rgba(229, 229, 229, 0.9);
   height: 70px;
   top: 0;
-  z-index: 999;
+  z-index: 90;
 }
 
 /* Foreground components black */
