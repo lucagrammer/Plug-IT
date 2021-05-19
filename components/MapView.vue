@@ -12,11 +12,7 @@
   <section class="map-view-container">
     <!-- Map view  -->
     <div class="map-container">
-      <iframe
-        title="Google Map"
-        class="map"
-        :src="`https://www.google.com/maps/d/embed?mid=${mapId}`"
-      ></iframe>
+      <iframe title="Google Map" class="map" :src="mapUrl"></iframe>
     </div>
 
     <!-- Description slot -->
@@ -33,6 +29,12 @@ export default {
   props: {
     /** map-id: the Google My Map identifier. By default is set to the Plug-IT HQ map */
     mapId: { type: String, default: () => '1xRytj_13i84wCH0axdS4uMCM_YuJKiJ4' },
+  },
+  data() {
+    return { mapUrl: '' }
+  },
+  mounted() {
+    this.mapUrl = `https://www.google.com/maps/d/embed?mid=${this.mapId}`
   },
 }
 </script>
