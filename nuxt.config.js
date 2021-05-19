@@ -1,3 +1,5 @@
+import redirectSSL from 'redirect-ssl'
+
 export default {
   ssr: true,
   target: 'server',
@@ -11,7 +13,10 @@ export default {
     {
       path: '/api',
       handler: '~/server/rest/api.js',
-    },
+    }, // Enable redirecting to SSL connection (only in production environment, recognized by means of NODE_ENV environment variable)
+    redirectSSL.create({
+      enabled: process.env.NODE_ENV === 'production',
+    }),
   ],
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
