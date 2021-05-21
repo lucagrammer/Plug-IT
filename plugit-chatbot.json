@@ -1,0 +1,143 @@
+{
+  "name": "Plug-IT Chatbot",
+  "data": {
+    "kb": {
+      "First_xor": {
+        "initials": [
+          "Welcome to the website of Plug-IT! I'am here to help you. Do you want to explore the website or contact us?"
+        ],
+        "choices": [
+          {
+            "id": "Contact_xor",
+            "intents": ["contact", "contact us","contact you","I want to contact Plug-IT","I want to contact","I want to contact you"],
+            "utterance": [
+              "Ok, perfect! ",
+              "Great!",
+              "Perfect!"
+            ]
+          },
+          {
+            "id": "guide",
+            "intents": ["guide", "explore","explore the website","I want to explore","I want to explore the website"],
+            "utterance": [
+              "Ok, perfect! ",
+              "Great!",
+              "Perfect!"
+            ]
+          }
+        ],
+        "quit": {
+          "intents": ["quit", "no", "reset"],
+          "utterance": ["Ok, goodbye!"]
+        },
+        "unknown": "I'm sorry, this option is not available. Please, choose between: contact or guide."
+      },
+      "Contact_xor": {
+        "initials": [
+          "Do you want to contact us or get more information about our offices?"
+        ],
+        "choices": [
+          {
+            "id": "Contact_page",
+            "intents": ["get more information","info","office info", "information about your offices", "offices","information","information about our offices"],
+            "utterance": [
+              "Here we are.",
+              "Great!",
+              "Perfect!"
+            ],
+            "payload": {
+              "customGuide": "/contacts"
+            }
+          },
+          {
+            "id": "Contact_form",
+            "intents": ["contact", "form", "contact form"],
+            "utterance": [
+              "Here we are.",
+              "Great!",
+              "Perfect!"
+            ],
+            "payload": {
+              "customGuide": "/contacts#form"
+            }
+          }
+        ],
+        "quit": {
+          "intents": ["quit", "no", "reset"],
+          "utterance": ["Ok, goodbye!"]
+        },
+        "unknown": "I'm sorry, this option is not available. Please, choose between: contact or information"
+      },
+      "guide": "I am here to guide you thorugh this website. Do you want to start?",
+      "home": "Welcome to the homepage, here you can see our most popular services and the next four events! Do you want to continue?",
+      "about": "Welcome to the About page of our website. Here you can find all the information about our company! Do you want to continue?",
+      "Contact_page": "Welcome to the Contacts page of our website. Here you can find information about our Offices and the Contact form.",
+      "Contact_form": "Here is the form through which you can contact us. Fill in the fields to send us a message! ",
+      "end": "That's it. Goodbye!",
+      "steps_v": ["/","/", "/about"],
+      "continue_v": ["continue", "ok", "go", "yes","sure","start","okay"],
+      "stay_message": "I'm sorry, but I don't understand. Please, try rephrasing your message!"
+    },
+    "process": {
+      "activities": [
+        {
+          "my_id": "start",
+          "next_id": "First_xor",
+          "my_type": "START",
+          "callback": "start"
+        },
+        {
+          "my_id": "First_xor",
+          "next_id": "end",
+          "my_type": "XOR",
+          "choices": ["Contact_xor", "guide"],
+          "callback": "generic_xor"
+        },
+        {
+          "my_id": "Contact_xor",
+          "next_id": null,
+          "my_type": "XOR",
+          "choices": ["Contact_form", "Contact_page"],
+          "callback": "generic_xor"
+        },
+        {
+          "my_id": "Contact_form",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "Contact_page",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "guide",
+          "next_id": "home",
+          "my_type": "TASK",
+          "callback": "guide"
+        },
+        {
+          "my_id": "home",
+          "next_id": "about",
+          "my_type": "TASK",
+          "callback": "guide"
+        },
+        {
+          "my_id": "about",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "end",
+          "next_id": "start",
+          "my_type": "END"
+        }
+      ],
+      "first_activity_id": "start"
+    }
+  }
+}
+

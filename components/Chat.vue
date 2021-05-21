@@ -9,7 +9,7 @@
 <template>
   <div class="chat">
     <div v-if="isOpen" class="chat-container">
-      <div id="chat-window" class="chat-window">
+      <div id="chat-window" ref="list" class="chat-window">
         <!-- CHAT MESSAGES -->
         <div
           v-for="(message, messageIndex) of chatList"
@@ -25,10 +25,11 @@
 
       <!-- CHAT INPUT -->
       <div class="chat-input">
+        <hr />
         <input
           v-model="messageToSend"
           type="text"
-          aria-label="Your message to the chatbot"
+          aria-label="Your message to the chatbot. Press enter to send."
           placeholder="Write here your answer"
           @keypress.enter="sendMessage"
         />
@@ -41,7 +42,12 @@
       role="button"
       @click="isOpen = !isOpen"
     >
-      <img src="/chatbot.png" alt="Open/close chat" />
+      <span
+        v-if="!isOpen"
+        class="mdi mdi-message-text"
+        title="Open chat"
+      ></span>
+      <span v-else class="mdi mdi-close" title="Close chat"></span>
     </div>
   </div>
 </template>
@@ -63,6 +69,20 @@ export default {
       /** Visibility flag of the chat */
       isOpen: false,
     }
+  },
+  watch: {
+    /** Scoll to last message in the chat */
+    chatList() {
+      const chatWindow = this.$refs.list
+      if (chatWindow) {
+        this.$nextTick().then(() => {
+          chatWindow.scrollTo({
+            top: chatWindow.scrollHeight,
+            behavior: 'smooth',
+          })
+        })
+      }
+    },
   },
   methods: {
     /** Send the entered message to the chatbot */
@@ -96,21 +116,26 @@ export default {
 .chatbot-button {
   border: 2px solid black;
   float: right;
-  margin: 10px;
+  margin-bottom: 10px;
   margin-right: 1.5vw;
+  padding: 10px;
   height: 40px;
   width: 40px;
   background: rgba(229, 229, 229, 0.99);
   border-radius: 100%;
-  padding: 10px;
   cursor: pointer;
+  text-align: center;
 }
 .pressed-button,
 .chatbot-button:hover {
   background: rgba(255, 255, 255, 0.9);
 }
-.chatbot-button img {
-  width: 100%;
+.pressed-button:hover {
+  background: rgba(229, 229, 229, 0.99);
+}
+.chatbot-button .mdi {
+  font-size: 28px;
+  line-height: 42px;
 }
 
 /* Styling for chat messages containers */
@@ -130,7 +155,7 @@ export default {
 }
 .chat-window {
   overflow-y: scroll;
-  height: calc(100% - 36px);
+  height: calc(100% - 41px);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.5);
 }
