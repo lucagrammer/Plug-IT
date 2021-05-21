@@ -5,14 +5,8 @@
         :default-route="[{ title: 'Our Services', path: '/services' }]"
         :alt-routes="[
           [{ title: areaName, path: '/areas/' + areaName }],
-          [
-            /*{ title: 'People', path: '/people' },*/
-            { title: personName, path: '/people/' + personID },
-          ],
-          [
-            /*{ title: ' events', path: '/events' },*/
-            { title: eventName, path: '/events/' + eventID },
-          ],
+          [{ title: personName, path: '/people/' + personID }],
+          [{ title: eventName, path: '/events/' + eventID }],
         ]"
         :current-page="serviceName"
       />

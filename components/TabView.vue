@@ -2,7 +2,7 @@
   Component: TabView
   Description: TabView for switching between tabs. On tab switch emit a 'tab-change' event
   Props: 
-  └── tabs: array of tabs name. Element slide[0] is selected by default
+  └── tabs: array of tab names. Element tabs[0] is selected by default
 -->
 
 <template>

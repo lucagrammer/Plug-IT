@@ -5,24 +5,18 @@
         :default-route="[{ title: 'People', path: '/people' }]"
         :alt-routes="[
           [
-            /*{ title: areaName, path: '/areas/' + areaName },*/
             {
               title: areaName + ' Team',
               path: '/areas/team/' + areaName,
             },
           ],
           [
-            /* {
-              title: serviceName,
-              path: '/services/' + serviceID,
-            },*/
             {
               title: serviceName + ' Team',
               path: '/services/team/' + serviceID,
             },
           ],
           [
-            /* { title: 'Events', path: '/events' }, */
             {
               title: eventName,
               path: '/events/' + eventID,
