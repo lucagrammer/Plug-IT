@@ -93,7 +93,10 @@ export default {
         content: this.messageToSend,
       })
       const packet = {
-        message: { type: 'data', payload: { data: this.messageToSend } },
+        message: {
+          type: 'data',
+          payload: { data: this.messageToSend.toLowerCase() },
+        },
         configurationId: process.env.configurationId,
       }
       WebSocketEventBus.$emit('send', packet)
