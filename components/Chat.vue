@@ -119,7 +119,7 @@ export default {
 .chatbot-button {
   border: 2px solid black;
   float: right;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   margin-right: 1.5vw;
   padding: 10px;
   height: 40px;
@@ -153,7 +153,7 @@ export default {
   max-height: 60vh;
   width: 300px;
   position: absolute;
-  bottom: 80px;
+  bottom: 95px;
   right: 0px;
 }
 .chat-window {

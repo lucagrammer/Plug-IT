@@ -18,7 +18,7 @@ Project for the Hypermedia Applications (Web and Multimedia) course at Politecni
 
 This part of the project consists in evaluating the usability of the [Reply.com](https://www.reply.com/en/) web application.
 
-> The files of the final **Usability Report** can be found in the [Usability Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Usability%20Report/Deliverable).
+> The file of the final **Usability Report** can be found in the [Usability Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Usability%20Report/Deliverable).
 
 ---
 
@@ -26,6 +26,14 @@ This part of the project consists in evaluating the usability of the [Reply.com]
 
 This part of the project consists in the design and development of a website for Plug-IT, a medium-sized Italian company operating in the ICT sector that needs a website to make itself known and to show its offers.
 
-> The files of the final **Design Document** can be found in the [Design Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Design%20Document/Deliverable).
+> The file of the final **Design Document** can be found in the [Design Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Design%20Document/Deliverable).
 
-> The files of the **Technical Documentation** can be fount in the [Technical Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Technical%20Documentation/README.md)
+> The file of the **Technical Documentation** can be fount in the [Technical Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Technical%20Documentation/README.md)
+
+---
+
+## **Chatbot Design**
+
+This part of the project consists in the design of a more advanced version of the chatbot than the one implemented on the website.
+
+> The file of the final **Chatbot Design Document** can be found in the [Chatbot Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Chatbot%20Design%20Document/Deliverable).

@@ -107,8 +107,8 @@ export default {
 
 /* Footer logo layout */
 img.logo {
-  max-height: 50px;
-  width: auto;
+  height: 50px;
+  width: 50px;
   float: left;
   margin-top: 7.5px;
   margin-bottom: 7.5px;

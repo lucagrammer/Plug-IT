@@ -177,8 +177,8 @@ nav {
 
 /* Logo layout */
 img {
-  max-height: 45px;
-  width: auto;
+  height: 45px;
+  width: 144px;
   float: left;
   margin-top: 12.5px;
   margin-bottom: 12.5px;
