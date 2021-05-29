@@ -4,11 +4,11 @@
 
 We developed the project by defining common guidelines for development. Each member of the group was able to touch on all aspects relating to the development. In particular:
 
-| Member          | Main focus                                     |
-| --------------- | ---------------------------------------------- |
-| Luca Leoni      | TODO                                           |
-| Luca Minotti    | Focus on component development and CSS styling |
-| Francesco Ratti | TODO                                           |
+| Member          | Main focus                                            |
+| --------------- | ----------------------------------------------------- |
+| Luca Leoni      | Focus on pages implementation and chatbot integration |
+| Luca Minotti    | Focus on component development and CSS styling        |
+| Francesco Ratti | TODO                                                  |
 
 <br>
 
