@@ -33,6 +33,13 @@
           placeholder="Write here your answer"
           @keypress.enter="sendMessage"
         />
+        <icon-button
+          class="send-button"
+          type="send"
+          label=""
+          icon="mdi mdi-send"
+          @click.native="sendMessage"
+        />
       </div>
     </div>
 
@@ -87,20 +94,23 @@ export default {
   methods: {
     /** Send the entered message to the chatbot */
     sendMessage() {
-      const { WebSocketEventBus } = require('mmcc/WebSocketEventBus')
-      this.$store.commit('addMessage', {
-        sender: false,
-        content: this.messageToSend,
-      })
-      const packet = {
-        message: {
-          type: 'data',
-          payload: { data: this.messageToSend.toLowerCase() },
-        },
-        configurationId: process.env.configurationId,
+      this.messageToSend = this.messageToSend.trim()
+      if (this.messageToSend.length > 0) {
+        const { WebSocketEventBus } = require('mmcc/WebSocketEventBus')
+        this.$store.commit('addMessage', {
+          sender: false,
+          content: this.messageToSend,
+        })
+        const packet = {
+          message: {
+            type: 'data',
+            payload: { data: this.messageToSend.toLowerCase() },
+          },
+          configurationId: process.env.configurationId,
+        }
+        WebSocketEventBus.$emit('send', packet)
+        this.messageToSend = ''
       }
-      WebSocketEventBus.$emit('send', packet)
-      this.messageToSend = ''
     },
   },
 }
@@ -158,7 +168,7 @@ export default {
 }
 .chat-window {
   overflow-y: scroll;
-  height: calc(100% - 41px);
+  height: calc(100% - 53px);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.5);
 }
@@ -203,8 +213,10 @@ export default {
   text-align: center;
   bottom: 8px;
 }
+
 input {
-  width: 80%;
+  height: 40px;
+  width: calc(95% - 75px);
   background: rgb(68, 197, 245);
   background: linear-gradient(
     130deg,
@@ -215,7 +227,7 @@ input {
   color: white;
   border: none;
   border-radius: 15px;
-  padding: 5px 15px 5px 15px;
+  padding: 0px 15px 0px 15px;
 }
 
 /* Styling for placeholders to ensure readability */
