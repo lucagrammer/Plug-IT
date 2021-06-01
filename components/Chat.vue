@@ -33,10 +33,11 @@
           placeholder="Write here your answer"
           @keypress.enter="sendMessage"
         />
+        <!-- SEND BUTTON -->
         <icon-button
           class="send-button"
-          type="send"
-          label=""
+          type="submit"
+          aria-label="Send message"
           icon="mdi mdi-send"
           @click.native="sendMessage"
         />
@@ -168,7 +169,7 @@ export default {
 }
 .chat-window {
   overflow-y: scroll;
-  height: calc(100% - 53px);
+  height: calc(100% - 45px);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.5);
 }
@@ -215,7 +216,6 @@ export default {
 }
 
 input {
-  height: 40px;
   width: calc(95% - 75px);
   background: rgb(68, 197, 245);
   background: linear-gradient(
@@ -227,7 +227,7 @@ input {
   color: white;
   border: none;
   border-radius: 15px;
-  padding: 0px 15px 0px 15px;
+  padding: 5px 15px 5px 15px;
 }
 
 /* Styling for placeholders to ensure readability */

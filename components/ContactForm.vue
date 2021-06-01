@@ -97,7 +97,7 @@
 
         <!-- Form controls -->
         <div class="centered-button">
-          <base-button type="send" label="Send message" icon="mdi mdi-send" />
+          <base-button type="submit" label="Send message" icon="mdi mdi-send" />
         </div>
       </div>
     </form>

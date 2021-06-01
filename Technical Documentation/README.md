@@ -8,7 +8,7 @@ We developed the project by defining common guidelines for development. Each mem
 | --------------- | ----------------------------------------------------- |
 | Luca Leoni      | Focus on pages implementation and chatbot integration |
 | Luca Minotti    | Focus on component development and CSS styling        |
-| Francesco Ratti | TODO                                                  |
+| Francesco Ratti | Focus on pages implementation and database            |
 
 <br>
 
@@ -144,7 +144,7 @@ We have developed the components of the website trying to maximize their _reusab
 
 - ## **_BaseButton_**
 
-  A general purpose button with an optional icon. On muose hover the icon is substituted with the otlined version (if not disabled via props)
+  A general purpose button with an optional icon. On mouse hover the icon is substituted with the outlined version (if not disabled via props)
   **Actual usage on the website:** as button for links or to send forms
 
   | Prop        | Type      | Default    | Note                                                                                                                                                                          |
@@ -159,6 +159,28 @@ We have developed the components of the website trying to maximize their _reusab
   #### Example
 
     <img src="./img/button.png" height="65">
+
+  ***
+
+  <br>
+
+- ## **_IconButton_**
+
+  A button which contains only a mandatory icon and without any label. On mouse hover the icon is substituted with the outlined version (if not disabled via props)
+  **Actual usage on the website:** as button to send messages in the chatbot
+
+  | Prop        | Type      | Default    | Note                                                                                                                                                                          |
+  | ----------- | --------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `aria-label`| `String`  | `""`       | description of the action that the button performs, for accessibility purposes                                                                                                |
+  | `type`      | `String`  | `"button"` | The HTML type of the button (button or submit).                                                                                                                               |
+  | `icon`      | `String`  | `""`       | The icon to be shown alongside the label. The props specify the name of the CSS class of the icon. [Material Design Icons](https://materialdesignicons.com) are used.         |
+  | `hoverFlag` | `Boolean` | `true`     | If true, it substitutes the icon with the outline version on mouse hover.                                                                                                     |
+
+    <br>
+
+  #### Example
+
+    <img src="./img/iconbutton.png" height="65">
 
   ***
 

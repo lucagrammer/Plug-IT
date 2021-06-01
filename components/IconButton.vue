@@ -1,17 +1,22 @@
 <!--
-  Component: Button
-  Description:  A general purpose button with an optional icon.
-                On muose hover the icon is substituted with the otlined version (if not disabled via props)
+  Component: IconButton
+  Description:  A button which contains only a mandatory icon and without any label.
+                On mouse hover the icon is substituted with the outlined version (if not disabled via props)
   Props:
-  ├── label: the button label
   ├── type: the type of the button. Button by default. 
-  ├── icon: the icon to be shown (optional)
+  ├── aria-label: description of the action that the button performs, for accessibility purposes
+  ├── icon: the icon to be shown
   └── hover-flag: substitute the icon with the outline version on mouse hover. True by default.
 -->
 
 <template>
-  <button :type="type" @mouseenter="outlineIcon()" @mouseleave="solidIcon()">
-    <span v-if="icon" :class="iconClass"></span>
+  <button
+    :type="type"
+    :aria-label="ariaLabel"
+    @mouseenter="outlineIcon()"
+    @mouseleave="solidIcon()"
+  >
+    <span :class="iconClass"></span>
   </button>
 </template>
 
@@ -21,7 +26,10 @@ export default {
     /** type: the type of the button. Button by default. */
     type: { type: String, default: () => 'button' },
 
-    /** icon: the icon to be shown (optional) */
+    /** aria-label: description of the action that the button performs, for accessibility purposes */
+    ariaLabel: { type: String, default: () => '' },
+
+    /** icon: the icon to be shown */
     icon: { type: String, default: () => '' },
 
     /** hover-flag: substitute the icon with the outline version on mouse hover. True by default. */
@@ -52,7 +60,7 @@ export default {
 
 button {
   width: 40px;
-  height: 40px;
+  /*height: 30px;*/
   background: rgba(25, 141, 251, 1);
   color: white;
   border: none;
@@ -62,6 +70,7 @@ button {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 1px 2px 1pt 0.2pt #868686c7;
+  padding: 5px 0px 5px 0px;
 }
 
 button:hover {

@@ -1,7 +1,7 @@
 <!--
   Component: Button
   Description:  A general purpose button with an optional icon.
-                On muose hover the icon is substituted with the otlined version (if not disabled via props)
+                On mouse hover the icon is substituted with the outlined version (if not disabled via props)
   Props:
   ├── label: the button label
   ├── type: the type of the button. Button by default. 
