@@ -43,6 +43,7 @@
           :destination-link="element.destinationLink"
           :subheading="element.subheading"
           :subheading-link="element.subheadingLink"
+          :pre-label="element.preLabel"
           :label="element.label"
           :label-icon="element.labelIcon"
           :summary="element.summary"

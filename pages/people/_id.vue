@@ -53,7 +53,7 @@
 
     <!-- SERVICES IN WHICH THE EMPLOYEE WORKS -->
     <section v-if="tasks.length > 0" class="section-container">
-      <h2>Tasks</h2>
+      <h2>Services</h2>
       <grid :elements="tasks" />
     </section>
   </main>
@@ -101,6 +101,7 @@ export default {
         destinationLink: '/services/' + service.id + fromPeopleToService,
         subheading: service.areaName,
         subheadingLink: '/areas/' + service.areaName + fromPeopleToArea,
+        preLabel: 'Role:',
         label: 'Project Manager',
       })
     })
@@ -111,6 +112,7 @@ export default {
         destinationLink: '/services/' + service.id + fromPeopleToService,
         subheading: service.areaName,
         subheadingLink: '/areas/' + service.areaName + fromPeopleToArea,
+        preLabel: 'Role:',
         label: data.position,
       })
     })

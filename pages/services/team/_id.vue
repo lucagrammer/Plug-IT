@@ -44,7 +44,7 @@ export default {
       heading: data.pm.name + ' ' + data.pm.surname,
       image: data.pm.image,
       destinationLink: '/people/' + data.pm.id + fromTeamToPeople,
-      subheading: 'Project Manager',
+      label: 'Project Manager',
     }
     const assistance = []
     data.assistants.forEach(function (assistant) {
@@ -52,7 +52,7 @@ export default {
         image: assistant.image,
         heading: assistant.name + ' ' + assistant.surname,
         destinationLink: '/people/' + assistant.id + fromTeamToPeople,
-        subheading: assistant.position,
+        label: assistant.position,
       })
     })
     return {

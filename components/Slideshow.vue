@@ -26,20 +26,20 @@
         <!-- Body of each slide -->
         <section class="slide-body-container">
           <paragraph>
-            <nuxt-link :to="slide.link !== undefined ? slide.link : ''">
-              <div class="title">
-                <h1>
+            <div class="title">
+              <h1>
+                <nuxt-link :to="slide.link !== undefined ? slide.link : ''">
                   {{ slide.title }}
-                </h1>
-                <!-- Labels -->
-                <div v-if="slide.labelType === 'new'" class="label new">
-                  New service
-                </div>
-                <div v-if="slide.labelType === 'popular'" class="label popular">
-                  Popular service
-                </div>
+                </nuxt-link>
+              </h1>
+              <!-- Labels -->
+              <div v-if="slide.labelType === 'new'" class="label new">
+                New service
               </div>
-            </nuxt-link>
+              <div v-if="slide.labelType === 'popular'" class="label popular">
+                Popular service
+              </div>
+            </div>
             <p>
               {{ slide.description }}
             </p>

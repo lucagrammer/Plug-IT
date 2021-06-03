@@ -16,7 +16,7 @@
         class="area-label"
         :to="'/areas/' + areaName + fromServiceToArea"
       >
-        {{ areaName }}
+        <span class="mdi mdi-link" /> {{ areaName }}
       </nuxt-link>
 
       <!-- SERVICE SLOGAN -->

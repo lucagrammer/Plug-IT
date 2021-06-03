@@ -47,6 +47,9 @@ a {
   text-decoration: none;
   color: black;
 }
+a:hover {
+  text-decoration: underline;
+}
 .disabled-link {
   cursor: initial;
 }

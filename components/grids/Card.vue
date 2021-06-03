@@ -9,6 +9,7 @@
   ├── destination-link: destination link of the heading and image
   ├── subheading: subheading of the card (optional)
   ├── subheading-link: link of the subheading (optional)
+  ├── pre-label: additional field which preceeds the label of the card (optional)
   ├── label: additional label of the card (optional)
   ├── label-icon: icon to be shown before the label (optional)
   └── summary: short paragraph to be shown inside the card (optional)
@@ -32,17 +33,20 @@
         </nuxt-link>
       </h2>
 
-      <!-- Label -->
-      <h3 v-if="label != ''"><span :class="labelIcon"></span> {{ label }}</h3>
-
       <!-- Subeading and related icon -->
-      <h3 v-if="subheading != ''">
+      <h3 v-if="subheading != ''" class="subheading">
         <nuxt-link
           :class="subheadingLink !== '' ? '' : 'disabled-link'"
           :to="subheadingLink"
         >
-          {{ subheading }}
+          <span class="mdi mdi-link" /> {{ subheading }}
         </nuxt-link>
+      </h3>
+
+      <!-- PreLabel and Label -->
+      <h3 v-if="label != ''">
+        <span v-if="labelIcon != ''" :class="labelIcon"></span
+        ><i v-if="preLabel != ''">{{ preLabel }}</i> {{ label }}
       </h3>
 
       <!-- Summary -->
@@ -70,6 +74,9 @@ export default {
 
     /** subheading-link: link of the subheading (optional) */
     subheadingLink: { type: String, default: () => '' },
+
+    /** pre-label: additional field which preceeds the label of the card (optional) */
+    preLabel: { type: String, default: () => '' },
 
     /** label: additional label of the card (optional) */
     label: { type: String, default: () => '' },
@@ -123,5 +130,8 @@ h3 {
   margin: 0px;
   font-size: 18px;
   font-weight: 400;
+}
+.subheading {
+  margin-top: 10px;
 }
 </style>

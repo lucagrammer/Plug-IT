@@ -8,7 +8,7 @@
 
       <!-- RELATED AREA -->
       <nuxt-link class="area-label" :to="'/areas/' + area + fromEventToArea">
-        {{ area }}
+        <span class="mdi mdi-link" /> {{ area }}
       </nuxt-link>
 
       <!-- EVENT OVERVIEW -->
@@ -97,7 +97,7 @@ export default {
         image: host.image,
         heading: host.name + ' ' + host.surname,
         destinationLink: '/people/' + host.id + fromEventToPeople,
-        subheading: host.position,
+        label: host.position,
       })
     })
     return {

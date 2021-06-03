@@ -43,7 +43,7 @@ export default {
       image: data.area_responsible[0].image,
       destinationLink:
         '/people/' + data.area_responsible[0].id + fromTeamToPeople,
-      subheading: 'Area Responsible',
+      label: 'Area Responsible',
     }
     const workers = []
     data.workers.forEach(function (worker) {
@@ -51,7 +51,7 @@ export default {
         image: worker.image,
         heading: worker.name + ' ' + worker.surname,
         destinationLink: '/people/' + worker.id + fromTeamToPeople,
-        subheading: worker.position,
+        label: worker.position,
       })
     })
     return {
