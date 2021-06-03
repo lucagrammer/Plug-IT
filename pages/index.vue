@@ -42,8 +42,6 @@ export default {
     const { data } = await $axios.get(
       `${process.env.BASE_URL}/api/upcomingEvents`
     )
-    // parameters required by the breadcrumb component of the destination page
-    const fromEventToArea = '?route=2'
 
     // convert the fetched data into the format required by the components
     const fetchedEvents = []
@@ -52,9 +50,9 @@ export default {
       fetchedEvents.push({
         image: event.icon,
         heading: event.title,
-        destinationLink: '/events/' + event.id,
+        destinationLink: '/events/' + event.i + '/',
         subheading: event.areaName,
-        subheadingLink: '/areas/' + event.areaName + fromEventToArea,
+        subheadingLink: '/areas/' + event.areaName + '/',
         label: event.date + ', ' + event.time.substring(0, 5),
         labelIcon: 'mdi mdi-calendar',
         summary: event.overview,
@@ -71,12 +69,13 @@ export default {
       slides: [
         {
           image: '/slideshow/1.png',
-          alt: 'A woman, standing in front of a table, uses a tablet to access smart office services.',
+          alt:
+            'A woman, standing in front of a table, uses a tablet to access smart office services.',
           title: 'Smart Offices at their best with IHC',
           description:
             'We help you connect your services together in remarkable new ways. IHC is the easiest way to do more with apps and devices like Twitter, Dropbox, iRobot, Fitbit, Alexa and much more.',
           labelType: 'new',
-          link: '/services/25',
+          link: '/services/25/',
         },
         {
           image: '/slideshow/2.png',
@@ -85,25 +84,27 @@ export default {
           description:
             'Attacks have shown record growth in recent years, and a solid security awareness program is an integral part of any defence-in-depth strategy.',
           labelType: 'popular',
-          link: '/services/6',
+          link: '/services/6/',
         },
         {
           image: '/slideshow/3.png',
-          alt: 'A hand points to graphs shown on a computer monitor. Another employee looks at the monitor',
+          alt:
+            'A hand points to graphs shown on a computer monitor. Another employee looks at the monitor',
           title: 'Discover hidden data with PowerBI',
           description:
             'Unleash the potential of your business data and achieve success in your business. With PowerBI you can analyse turnover, sales network results, costs and forecasts in just a few clicks.',
           labelType: 'new',
-          link: '/services/16',
+          link: '/services/16/',
         },
         {
           image: '/slideshow/4.png',
-          alt: 'A robot performs complex calculations thanks to artificial intelligence',
+          alt:
+            'A robot performs complex calculations thanks to artificial intelligence',
           title: 'AIP+: AI for every business',
           description:
             'A collection of modular, pre-integrated AI services and capabilities, designed to make it significantly easier to adopt AI throughout your business.',
           labelType: 'popular',
-          link: '/services/19',
+          link: '/services/19/',
         },
       ],
     }

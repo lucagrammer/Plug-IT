@@ -2,28 +2,28 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: 'Areas', path: '/areas' }]"
+        :default-route="[{ title: 'Areas', path: '/areas/' }]"
         :alt-routes="[
           [
             {
               title: personName,
-              path: '/people/' + personID,
+              path: '/people/' + personID + '/',
             },
           ],
           [
             {
               title: eventName,
-              path: '/events/' + eventID,
+              path: '/events/' + eventID + '/',
             },
           ],
-          [{ title: 'Areas', path: '/areas' }],
+          [{ title: 'Events', path: '/events/' }],
           [
             {
               title: serviceName,
-              path: '/services/' + serviceID,
+              path: '/services/' + serviceID + '/',
             },
           ],
-          [{ title: 'Our Services', path: '/services' }],
+          [{ title: 'Our Services', path: '/services/' }],
         ]"
         :current-page="areaName"
       />
@@ -41,7 +41,7 @@
         <base-button
           :label="'Discover our ' + areaName + ' Team'"
           icon="mdi mdi-account-group"
-          @click.native="navigateTo('/areas/team/' + areaName)"
+          @click.native="navigateTo('/areas/team/' + areaName + '/')"
         />
       </paragraph>
     </section>
@@ -77,11 +77,13 @@ export default {
       `${process.env.BASE_URL}/api/area/${areaName}`
     )
     if (data === null) {
-      return redirect('/error?err=The area you are looking for does not exist.')
+      return redirect(
+        '/error/?err=The area you are looking for does not exist.'
+      )
     }
 
     // parameters required by the breadcrumb component of the destination page
-    const fromAreaToService = '?route=0&area=' + areaName
+    const fromAreaToService = '/?route=0&area=' + areaName
 
     // convert the fetched data into the format required by the components
     const services = []

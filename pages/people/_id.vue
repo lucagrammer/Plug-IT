@@ -2,27 +2,27 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: 'People', path: '/people' }]"
+        :default-route="[{ title: 'People', path: '/people/' }]"
         :alt-routes="[
           [
             {
               title: areaName + ' Team',
-              path: '/areas/team/' + areaName,
+              path: '/areas/team/' + areaName + '/',
             },
           ],
           [
             {
               title: serviceName + ' Team',
-              path: '/services/team/' + serviceID,
+              path: '/services/team/' + serviceID + '/',
             },
           ],
           [
             {
               title: eventName,
-              path: '/events/' + eventID,
+              path: '/events/' + eventID + '/',
             },
           ],
-          [{ title: areaName, path: '/areas/' + areaName }],
+          [{ title: areaName, path: '/areas/' + areaName + '/' }],
         ]"
         :current-page="name"
       />
@@ -82,14 +82,14 @@ export default {
     )
     if (data === null) {
       return redirect(
-        '/error?err=The employee you are looking for does not exist.'
+        '/error/?err=The employee you are looking for does not exist.'
       )
     }
 
     // parameters required by the breadcrumb component of the destination page
     const name = data.name + ' ' + data.surname
-    const fromPeopleToService = '?route=1&person=' + name + '&pID=' + data.id
-    const fromPeopleToArea = '?route=0&person=' + name + '&pID=' + data.id
+    const fromPeopleToService = '/?route=1&person=' + name + '&pID=' + data.id
+    const fromPeopleToArea = '/?route=0&person=' + name + '&pID=' + data.id
 
     // convert the fetched data into the format required by the components
     const tasks = []

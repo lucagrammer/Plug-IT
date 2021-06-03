@@ -87,7 +87,7 @@
         <base-button
           label="Contact us"
           icon="mdi mdi-email"
-          @click.native="navigateTo('/contacts')"
+          @click.native="navigateTo('/contacts/')"
         />
       </div>
     </section>

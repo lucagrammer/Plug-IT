@@ -2,11 +2,11 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: 'Our Services', path: '/services' }]"
+        :default-route="[{ title: 'Our Services', path: '/services/' }]"
         :alt-routes="[
-          [{ title: areaName, path: '/areas/' + areaName }],
-          [{ title: personName, path: '/people/' + personID }],
-          [{ title: eventName, path: '/events/' + eventID }],
+          [{ title: areaName, path: '/areas/' + areaName + '/' }],
+          [{ title: personName, path: '/people/' + personID + '/' }],
+          [{ title: eventName, path: '/events/' + eventID + '/' }],
         ]"
         :current-page="serviceName"
       />
@@ -36,7 +36,7 @@
       <base-button
         :label="'Discover our ' + serviceName + ' Team'"
         icon="mdi mdi-account-group"
-        @click.native="navigateTo('/services/team/' + serviceID)"
+        @click.native="navigateTo('/services/team/' + serviceID + '/')"
       />
     </section>
     <hr />
@@ -74,13 +74,13 @@ export default {
     )
     if (data === null) {
       return redirect(
-        '/error?err=The service you are looking for does not exist.'
+        '/error/?err=The service you are looking for does not exist.'
       )
     }
 
     // parameters required by the breadcrumb component of the destination page
     const fromServiceToArea =
-      '?route=3&sID=' + serviceID + '&service=' + data.name
+      '/?route=3&sID=' + serviceID + '&service=' + data.name
 
     return {
       serviceID,

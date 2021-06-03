@@ -3,7 +3,7 @@
     <section class="section-container">
       <breadcrumb
         :default-route="[
-          { title: serviceName, path: '/services/' + serviceID },
+          { title: serviceName, path: '/services/' + serviceID + '/' },
         ]"
         :current-page="serviceName + ' Team'"
       />
@@ -31,13 +31,13 @@ export default {
     )
     if (data === null) {
       return redirect(
-        '/error?err=The service you are looking for does not exist.'
+        '/error/?err=The service you are looking for does not exist.'
       )
     }
 
     // parameters required by the breadcrumb component of the destination page
     const fromTeamToPeople =
-      '?route=1&sID=' + serviceID + '&service=' + data.name.replace('+', '%2b')
+      '/?route=1&sID=' + serviceID + '&service=' + data.name.replace('+', '%2b')
 
     // convert the fetched data into the format required by the components
     const projectManager = {

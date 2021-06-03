@@ -70,32 +70,32 @@ export default {
         {
           name: 'About',
           icon: 'mdi mdi-book-open-page-variant',
-          path: '/about',
+          path: '/about/',
         },
         {
           name: 'People',
           icon: 'mdi mdi-account-group',
-          path: '/people',
+          path: '/people/',
         },
         {
           name: 'Events',
           icon: 'mdi mdi-calendar-month',
-          path: '/events',
+          path: '/events/',
         },
         {
           name: 'Areas',
           icon: 'mdi mdi-shape',
-          path: '/areas',
+          path: '/areas/',
         },
         {
           name: 'Our Services',
           icon: 'mdi mdi-view-grid',
-          path: '/services',
+          path: '/services/',
         },
         {
           name: 'Contacts',
           icon: 'mdi mdi-email',
-          path: '/contacts',
+          path: '/contacts/',
         },
       ],
 

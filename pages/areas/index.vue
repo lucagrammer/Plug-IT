@@ -22,7 +22,7 @@ export default {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/areas`)
     if (data === null || data.length === 0) {
       return redirect(
-        '/error?err=Failed to retrieve areas data. Try again later.'
+        '/error/?err=Failed to retrieve areas data. Try again later.'
       )
     }
 
@@ -32,7 +32,7 @@ export default {
       areas.push({
         image: area.icon,
         heading: area.name,
-        destinationLink: '/areas/' + area.name,
+        destinationLink: '/areas/' + area.name + '/',
         summary: area.overview,
       })
     })

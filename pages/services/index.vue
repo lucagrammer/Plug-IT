@@ -36,12 +36,12 @@ export default {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/services`)
     if (data === null || data.length === 0) {
       return redirect(
-        '/error?err=Failed to retrieve sercives data. Try again later.'
+        '/error/?err=Failed to retrieve sercives data. Try again later.'
       )
     }
 
     // parameters required by the breadcrumb component of the destination page
-    const fromServicesToArea = '?route=4'
+    const fromServicesToArea = '/?route=4'
 
     // convert the fetched data into the format required by the components
     const fetchedServices = []
@@ -49,7 +49,7 @@ export default {
       fetchedServices.push({
         image: service.icon,
         heading: service.name,
-        destinationLink: '/services/' + service.id,
+        destinationLink: '/services/' + service.id + '/',
         subheading: service.areaName,
         subheadingLink: '/areas/' + service.areaName + fromServicesToArea,
         summary: service.slogan,

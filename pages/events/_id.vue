@@ -2,7 +2,7 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: 'Events', path: '/events' }]"
+        :default-route="[{ title: 'Events', path: '/events/' }]"
         :current-page="eventName"
       />
 
@@ -82,13 +82,14 @@ export default {
     )
     if (data === null) {
       return redirect(
-        '/error?err=The event you are looking for does not exist.'
+        '/error/?err=The event you are looking for does not exist.'
       )
     }
 
     // parameters required by the breadcrumb component of the destination page
-    const fromEventToArea = '?route=1&eID=' + eventID + '&event=' + data.title
-    const fromEventToPeople = '?route=2&eID=' + eventID + '&event=' + data.title
+    const fromEventToArea = '/?route=1&eID=' + eventID + '&event=' + data.title
+    const fromEventToPeople =
+      '/?route=2&eID=' + eventID + '&event=' + data.title
 
     // convert the fetched data into the format required by the components
     const hosts = []

@@ -42,12 +42,12 @@ export default {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/events`)
     if (data === null || data.length === 0) {
       return redirect(
-        '/error?err=Failed to retrieve event data. Try again later.'
+        '/error/?err=Failed to retrieve event data. Try again later.'
       )
     }
 
     // parameters required by the breadcrumb component of the destination page
-    const fromEventToArea = '?route=2'
+    const fromEventToArea = '/?route=2'
 
     // convert the fetched data into the format required by the components
     const fetchedEvents = []
@@ -55,7 +55,7 @@ export default {
       fetchedEvents.push({
         image: event.icon,
         heading: event.title,
-        destinationLink: '/events/' + event.id,
+        destinationLink: '/events/' + event.id + '/',
         subheading: event.areaName,
         subheadingLink: '/areas/' + event.areaName + fromEventToArea,
         label: event.date + ', ' + event.time.substring(0, 5),

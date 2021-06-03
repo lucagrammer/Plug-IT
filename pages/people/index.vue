@@ -45,7 +45,7 @@ export default {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/people`)
     if (data === null || data.length === 0) {
       return redirect(
-        '/error?err=Failed to retrieve employee data. Try again later.'
+        '/error/?err=Failed to retrieve employee data. Try again later.'
       )
     }
 
@@ -55,7 +55,7 @@ export default {
       people.push({
         heading: person.name + ' ' + person.surname,
         image: person.image,
-        destinationLink: '/people/' + person.id,
+        destinationLink: '/people/' + person.id + '/',
         label: person.position,
       })
     })

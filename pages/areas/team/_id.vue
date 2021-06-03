@@ -2,7 +2,7 @@
   <main class="page-container">
     <section class="section-container">
       <breadcrumb
-        :default-route="[{ title: areaName, path: '/areas/' + areaName }]"
+        :default-route="[{ title: areaName, path: '/areas/' + areaName + '/' }]"
         :current-page="areaName + ' Team'"
       />
 
@@ -30,11 +30,13 @@ export default {
       `${process.env.BASE_URL}/api/areateam/${areaName}`
     )
     if (data === null) {
-      return redirect('/error?err=The area you are looking for does not exist.')
+      return redirect(
+        '/error/?err=The area you are looking for does not exist.'
+      )
     }
 
     // parameters required by the breadcrumb component of the destination page
-    const fromTeamToPeople = '?route=0&area=' + areaName
+    const fromTeamToPeople = '/?route=0&area=' + areaName
 
     // convert the fetched data into the format required by the components
     const responsible = {
