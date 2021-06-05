@@ -28,7 +28,7 @@ This part of the project consists in the design and development of a website for
 
 > The file of the final **Design Document** can be found in the [Design Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Design%20Document/Deliverable).
 
-> The file of the **Technical Documentation** can be fount in the [Technical Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Technical%20Documentation/README.md)
+> The file of the **Technical Documentation** can be found in the [Technical Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Technical%20Documentation/README.md)
 
 ---
 
