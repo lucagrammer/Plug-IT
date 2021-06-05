@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e3931d26-a5c3-4810-b9b4-d3b85822f76d.DATABASE:plugit-database</OriginalElement>
+  <nodes>
+    <node x="515.1210495535687" y="620.0">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.messages</node>
+    <node x="255.39783139813414" y="534.5672970946134">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.services</node>
+    <node x="545.2956627962683" y="275.61144546493784">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.areas</node>
+    <node x="258.39783139813414" y="35.0">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.events</node>
+    <node x="6.0" y="645.0672970946134">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.assistance</node>
+    <node x="6.5" y="145.5">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.eventHost</node>
+    <node x="-5.0" y="308.61144546493784">e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.people</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.assistance" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.people" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.services" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.areas" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.eventHost" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.people" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.eventHost" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.events" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.assistance" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.services" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.areas" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.people" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.events" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.areas" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.services" target="e3931d26-a5c3-4810-b9b4-d3b85822f76d.TABLE:plugit-database.public.people" relationship="REFERENCES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Circular" zoom="1.0" showDependencies="false" x="321.0" y="487.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
