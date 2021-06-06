@@ -50,7 +50,7 @@ export default {
       fetchedEvents.push({
         image: event.icon,
         heading: event.title,
-        destinationLink: '/events/' + event.i + '/',
+        destinationLink: '/events/' + event.id + '/',
         subheading: event.areaName,
         subheadingLink: '/areas/' + event.areaName + '/',
         label: event.date + ', ' + event.time.substring(0, 5),
