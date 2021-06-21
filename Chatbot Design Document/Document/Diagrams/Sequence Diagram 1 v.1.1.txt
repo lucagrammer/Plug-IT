@@ -1,0 +1,15 @@
+
+participant Chatbot
+participant User
+participant GUI
+
+Chatbot->User:Hello, I am here to help you. Do you need support or do you want to explore the website?
+User->Chatbot:support
+Chatbot->User:Great! Do you want to see the Support Page or fulfil the Support form here?
+User->Chatbot:support page
+parallel 
+Chatbot->User:Ok! Here it is the Contacts Page: Our Offices and the form to contact us.
+GUI->User:Shows the Support Page (Contacts)
+parallel off
+User->GUI:Fulfil the form
+GUI->User:Shows the confirm message

@@ -1,0 +1,15 @@
+
+
+participant Chat
+participant User
+
+participant GUI
+
+Chat->User:Hello, I am here to help you. Do you need support or do you want to explore the website?
+User->Chat:support
+Chat->User:Great! Do you want to see the Contact Page or fulfil the Contact form here?
+User->Chat:contact page
+Chat->User:Ok! Here it is the Contact Page: Our Offices and the form to contact us.
+GUI->User:Shows the Contact Page
+User->GUI:Fulfil the form
+GUI->User:Shows the confirm message

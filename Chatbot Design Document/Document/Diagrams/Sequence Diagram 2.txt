@@ -1,0 +1,22 @@
+
+
+participant Chat
+participant User
+participant GUI
+
+Chat->User:Hello, I am here to help you. Do you need support or do you want to explore the website?
+User->Chat:explore
+GUI->User:Shows the homepage.
+Chat->User:Ok! This is the homepage, you can find our most relevant services and the next upcoming events.
+Chat->User:Do you want to see our solutions or discover more about Plug-IT?
+User->Chat:discover
+Chat->User:Great! Welcome to the About page. Here you can discover our history.
+GUI->User:Shows the About Page
+Chat->User:Welcome to the People page. These are our employees.
+GUI->User:Shows the People Page
+Chat->User:We have finished. Now, do you want to see the Contact Page or fulfil the Contact form here in the chat?
+User->Chat:contact page
+Chat->User:Ok! Here it is the Contact Page: Our Offices and the form to contact us.
+GUI->User:Shows the Contact Page
+User->GUI:Fulfil the form
+GUI->User:Shows the confirm message

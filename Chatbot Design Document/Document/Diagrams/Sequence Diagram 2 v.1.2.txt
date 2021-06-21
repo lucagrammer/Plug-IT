@@ -1,0 +1,31 @@
+
+participant Chatbot
+participant User
+participant GUI
+
+Chatbot->User:Hello, I am here to help you. Do you need support or do you want to explore the website?
+User->Chatbot:explore
+parallel 
+GUI->User:Shows the homepage.
+Chatbot->User:Ok! This is the homepage, you can find our most relevant services and the next upcoming events.
+parallel off
+Chatbot->User:Do you want to see our solutions or discover more about Plug-IT?
+User->Chatbot:discover
+parallel 
+Chatbot->User:Great! Welcome to the About page. Here you can discover our history.
+GUI->User:Shows the About Page
+parallel off
+User->Chatbot:okay
+parallel 
+Chatbot->User:Welcome to the People page. These are our employees.
+GUI->User:Shows the People Page
+parallel off
+User->Chatbot:okay
+Chatbot->User:We have finished. Now, do you want to see the Contacts Page or fulfil the Contact form here in the chat?
+User->Chatbot:contact page
+parallel 
+Chatbot->User:Ok! Here it is the Contacts Page: Our Offices and the form to contact us.
+GUI->User:Shows the Contacts Page
+parallel off
+User->GUI:Fulfil the form
+GUI->User:Shows the confirm message
