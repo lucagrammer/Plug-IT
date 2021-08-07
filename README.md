@@ -12,6 +12,8 @@ Project for the Hypermedia Applications (Web and Multimedia) course at Politecni
 - Francesco Ratti ([@gilgameshJR](https://github.com/GilgameshJR))  
   <br>
 
+#### Final score: 30L/30
+
 ---
 
 ## **Usability Evaluation**
@@ -37,3 +39,4 @@ This part of the project consists in the design and development of a website for
 This part of the project consists in the design of a more advanced version of the chatbot than the one implemented on the website.
 
 > The file of the final **Chatbot Design Document** can be found in the [Chatbot Delivery Folder](https://github.com/lucagrammer/Plug-IT/tree/master/Chatbot%20Design%20Document/Deliverable).
+
