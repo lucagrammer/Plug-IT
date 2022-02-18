@@ -12,7 +12,7 @@ Project for the Hypermedia Applications (Web and Multimedia) course at Politecni
 - Francesco Ratti ([@gilgameshJR](https://github.com/GilgameshJR))  
   <br>
 
-#### Final score: 30L/30
+#### Final score: 30/30 cum Laude
 
 ---
 
